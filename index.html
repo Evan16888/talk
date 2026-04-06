@@ -18,7 +18,6 @@
   --accent2: #a29bfe;
   --accent-glow: rgba(108, 92, 231, 0.3);
   --green: #00cec9;
-  --orange: #fdcb6e;
   --radius: 14px;
 }
 
@@ -31,7 +30,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Header */
 .header {
   position: sticky;
   top: 0;
@@ -47,7 +45,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .header h1 {
@@ -59,10 +57,7 @@ body {
   background-clip: text;
 }
 
-.mode-toggle {
-  display: flex;
-  gap: 6px;
-}
+.mode-toggle { display: flex; gap: 6px; }
 
 .mode-btn {
   padding: 7px 14px;
@@ -83,16 +78,13 @@ body {
   box-shadow: 0 2px 12px var(--accent-glow);
 }
 
-/* Page Selector */
 .page-selector {
   display: flex;
   gap: 6px;
   overflow-x: auto;
   scrollbar-width: none;
-  -ms-overflow-style: none;
   padding-bottom: 2px;
 }
-
 .page-selector::-webkit-scrollbar { display: none; }
 
 .page-btn {
@@ -120,12 +112,95 @@ body {
   transform: scale(1.08);
 }
 
-.page-btn.completed {
-  border-color: var(--green);
-  color: var(--green);
+.page-btn.completed { border-color: var(--green); color: var(--green); }
+
+.header-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  padding-top: 8px;
+  align-items: center;
 }
 
-/* Content */
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.ctrl-label {
+  font-size: 13px;
+  color: var(--text2);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.speed-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  outline: none;
+  min-width: 60px;
+}
+
+.speed-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--accent-glow);
+}
+
+.speed-value {
+  font-size: 14px;
+  color: var(--accent2);
+  font-weight: 700;
+  min-width: 36px;
+  text-align: center;
+}
+
+.voice-select {
+  flex: 1;
+  min-width: 0;
+  padding: 7px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238888a8'%3E%3Cpath d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+  text-overflow: ellipsis;
+}
+
+.progress-bar {
+  height: 2px;
+  background: var(--border);
+  border-radius: 1px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--green));
+  border-radius: 1px;
+  transition: width 0.3s;
+}
+
 .content {
   padding: 16px;
   padding-bottom: 100px;
@@ -140,14 +215,13 @@ body {
   margin-bottom: 16px;
 }
 
-/* Sentence Card */
 .sentence-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 18px;
   margin-bottom: 12px;
-  transition: all 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s, opacity 0.3s;
   position: relative;
   overflow: hidden;
 }
@@ -155,32 +229,17 @@ body {
 .sentence-card::before {
   content: '';
   position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
+  left: 0; top: 0; bottom: 0;
   width: 3px;
   background: var(--border);
   border-radius: 0 2px 2px 0;
   transition: background 0.3s;
 }
 
-.sentence-card.active::before {
-  background: linear-gradient(180deg, var(--accent), var(--green));
-}
-
-.sentence-card.active {
-  border-color: var(--accent);
-  box-shadow: 0 4px 24px var(--accent-glow);
-}
-
-.sentence-card.completed::before {
-  background: var(--green);
-}
-
-.sentence-card.completed {
-  border-color: rgba(0, 206, 201, 0.3);
-  opacity: 0.7;
-}
+.sentence-card.active::before { background: linear-gradient(180deg, var(--accent), var(--green)); }
+.sentence-card.active { border-color: var(--accent); box-shadow: 0 4px 24px var(--accent-glow); }
+.sentence-card.completed::before { background: var(--green); }
+.sentence-card.completed { border-color: rgba(0, 206, 201, 0.3); opacity: 0.7; }
 
 .sentence-header {
   display: flex;
@@ -213,9 +272,7 @@ body {
   box-shadow: 0 2px 12px var(--accent-glow);
 }
 
-.sentence-play:active {
-  transform: scale(0.92);
-}
+.sentence-play:active { transform: scale(0.92); }
 
 .sentence-play.playing {
   background: linear-gradient(135deg, var(--green), #00b894);
@@ -242,27 +299,13 @@ body {
   padding: 2px 1px;
   border-radius: 4px;
   transition: all 0.15s;
-  position: relative;
 }
 
-.sentence-text .word:active {
-  background: var(--accent-glow);
-  color: var(--accent2);
-}
+.sentence-text .word:active { background: var(--accent-glow); color: var(--accent2); }
+.sentence-text .word.word-playing { background: rgba(108, 92, 231, 0.25); color: var(--accent2); }
 
-.sentence-text .word.word-playing {
-  background: rgba(108, 92, 231, 0.25);
-  color: var(--accent2);
-}
-
-/* Full Page Mode */
-.full-page-view {
-  display: none;
-}
-
-.full-page-view.active {
-  display: block;
-}
+.full-page-view { display: none; }
+.full-page-view.active { display: block; }
 
 .full-text-card {
   background: var(--surface);
@@ -272,10 +315,7 @@ body {
   margin-bottom: 12px;
 }
 
-.full-text-card .sentence-text {
-  font-size: 20px;
-  line-height: 1.9;
-}
+.full-text-card .sentence-text { font-size: 20px; line-height: 1.9; }
 
 .full-play-btn {
   display: flex;
@@ -296,20 +336,12 @@ body {
   margin-bottom: 12px;
 }
 
-.full-play-btn:active {
-  transform: scale(0.97);
-}
+.full-play-btn:active { transform: scale(0.97); }
+.full-play-btn.playing { background: linear-gradient(135deg, var(--green), #00b894); }
 
-.full-play-btn.playing {
-  background: linear-gradient(135deg, var(--green), #00b894);
-}
-
-/* Bottom Nav */
 .bottom-nav {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 0; left: 0; right: 0;
   background: rgba(10, 10, 15, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -338,9 +370,7 @@ body {
   gap: 6px;
 }
 
-.nav-btn:active {
-  transform: scale(0.96);
-}
+.nav-btn:active { transform: scale(0.96); }
 
 .nav-btn.primary {
   background: linear-gradient(135deg, var(--accent), #8b5cf6);
@@ -349,56 +379,8 @@ body {
   box-shadow: 0 2px 16px var(--accent-glow);
 }
 
-.nav-btn:disabled {
-  opacity: 0.4;
-  pointer-events: none;
-}
+.nav-btn:disabled { opacity: 0.4; pointer-events: none; }
 
-/* Speed Control */
-.speed-control {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-  padding-top: 8px;
-}
-
-.speed-label {
-  font-size: 13px;
-  color: var(--text2);
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.speed-slider {
-  flex: 1;
-  -webkit-appearance: none;
-  appearance: none;
-  height: 4px;
-  border-radius: 2px;
-  background: var(--border);
-  outline: none;
-}
-
-.speed-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--accent);
-  cursor: pointer;
-  box-shadow: 0 2px 8px var(--accent-glow);
-}
-
-.speed-value {
-  font-size: 14px;
-  color: var(--accent2);
-  font-weight: 700;
-  min-width: 36px;
-  text-align: center;
-}
-
-/* Word tooltip */
 .word-tooltip {
   position: fixed;
   background: var(--surface2);
@@ -416,45 +398,10 @@ body {
   transition: all 0.2s;
 }
 
-.word-tooltip.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+.word-tooltip.show { opacity: 1; transform: translateY(0); }
 
-/* Sentence view */
 .sentence-view { display: block; }
 .sentence-view.hidden { display: none; }
-
-/* Progress bar */
-.progress-bar {
-  height: 2px;
-  background: var(--border);
-  border-radius: 1px;
-  overflow: hidden;
-  margin-top: 8px;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent), var(--green));
-  border-radius: 1px;
-  transition: width 0.3s;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.sentence-card { animation: fadeInUp 0.35s ease both; }
-.sentence-card:nth-child(2) { animation-delay: 0.05s; }
-.sentence-card:nth-child(3) { animation-delay: 0.1s; }
-.sentence-card:nth-child(4) { animation-delay: 0.15s; }
-.sentence-card:nth-child(5) { animation-delay: 0.2s; }
-.sentence-card:nth-child(6) { animation-delay: 0.25s; }
-.sentence-card:nth-child(7) { animation-delay: 0.3s; }
-.sentence-card:nth-child(8) { animation-delay: 0.35s; }
 </style>
 </head>
 <body>
@@ -469,10 +416,18 @@ body {
   </div>
   <div class="page-selector" id="pageSelector"></div>
   <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
-  <div class="speed-control">
-    <span class="speed-label">语速</span>
-    <input type="range" class="speed-slider" id="speedSlider" min="0.5" max="1.5" step="0.05" value="0.92">
-    <span class="speed-value" id="speedValue">0.92x</span>
+  <div class="header-controls">
+    <div class="control-row">
+      <span class="ctrl-label">语速</span>
+      <input type="range" class="speed-slider" id="speedSlider" min="0.5" max="1.5" step="0.05" value="0.92">
+      <span class="speed-value" id="speedValue">0.92x</span>
+    </div>
+  </div>
+  <div class="header-controls">
+    <div class="control-row">
+      <span class="ctrl-label">人声</span>
+      <select class="voice-select" id="voiceSelect"><option>加载中...</option></select>
+    </div>
   </div>
 </div>
 
@@ -491,97 +446,70 @@ body {
 
 <script>
 const pages = [
-  {
-    title: "Page 1 · Opening",
-    sentences: [
-      "Good afternoon everyone,",
-      "I'm [name].",
-      "Today we're going to talk about Apple.",
-      "We'll use a structured way to look at its antitrust challenges and then suggest some solutions."
-    ]
-  },
-  {
-    title: "Page 2 · Introduction",
-    sentences: [
-      "So first, a quick introduction to Apple.",
-      "It's one of the most valuable tech companies, with over 1.5 billion devices in use.",
-      "But right now, it's facing quite serious antitrust issues in the US, Europe, and other regions.",
-      "The main problems are: the 30% App Store commission, limits on third-party payments, iMessage not being cross-platform, and high switching costs.",
-      "So to address this, we suggest three main actions: open app distribution, adjust the commission model, and allow more payment options."
-    ]
-  },
-  {
-    title: "Page 3 · Problem Definition",
-    sentences: [
-      "Now let's define the problem.",
-      "Apple has a very strong ecosystem and makes a lot of service revenue.",
-      "But at the same time, many countries are investigating it.",
-      "The key issues are high fees, no alternative app stores, restricted payments, and user lock-in.",
-      "So the challenge here is: how can Apple follow regulations, but still keep its revenue and security?"
-    ]
-  },
-  {
-    title: "Page 4 · Monopoly Accusation",
-    sentences: [
-      "So why is Apple being accused of monopoly?",
-      "Mainly two reasons.",
-      "First, market power. Apple controls the App Store, charges 30%, and doesn't allow other app stores.",
-      "Second, ecosystem lock-in. iMessage doesn't work across platforms, NFC is limited to Apple Pay, and switching is costly.",
-      "So both users and developers become very dependent on Apple."
-    ]
-  },
-  {
-    title: "Page 5 · Solutions Overview",
-    sentences: [
-      "Now let's look at the solutions.",
-      "There are two main directions: breaking the distribution monopoly and reducing lock-in.",
-      "So we suggest things like: tiered fees, opening app distribution, allowing more payment options, improving messaging, opening NFC, and enabling data portability.",
-      "Overall, the idea is to make the ecosystem more open, but still keep control."
-    ]
-  },
-  {
-    title: "Page 6 · Prioritisation",
-    sentences: [
-      "Here we prioritise the solutions using a 2×2 matrix.",
-      "The most important ones are the \"Do First\" actions: high impact and easy to implement.",
-      "These include opening app distribution, adjusting fees, and allowing external payments.",
-      "Quick wins include cross-platform messaging.",
-      "Some actions, like data portability, are important but take more time.",
-      "So we focus on what is both impactful and doable first."
-    ]
-  },
-  {
-    title: "Page 7 · Workplan",
-    sentences: [
-      "This is our workplan, focusing on three areas.",
-      "First, app distribution. How can Apple allow sideloading but still stay secure?",
-      "We suggest allowing it with a verification process.",
-      "Second, commission fees. How can Apple reduce fees but still keep revenue?",
-      "We suggest tiered fees and external payments.",
-      "Third, payment access. How can Apple open NFC safely?",
-      "We suggest controlled APIs and monitoring transactions."
-    ]
-  },
-  {
-    title: "Page 8 · Deep Dive: Tiered Fees",
-    sentences: [
-      "Here we go deeper into one solution: tiered fees.",
-      "The key question is how to lower fees but still keep revenue.",
-      "We compare competitors like Google and Samsung, and test different fee levels.",
-      "What we find is that lower fees can attract more developers and increase spending.",
-      "So even if commission drops, Apple can gain volume and reduce legal risk."
-    ]
-  },
-  {
-    title: "Page 9 · Conclusion",
-    sentences: [
-      "Finally, our conclusion.",
-      "First, the situation: Apple has a strong ecosystem and high revenue.",
-      "Second, the problem: it faces global antitrust pressure.",
-      "And third, the solution: open app distribution, introduce tiered fees and external payments, and open NFC.",
-      "These help Apple stay compliant while still protecting its business."
-    ]
-  }
+  { title: "Page 1 · Opening", sentences: [
+    "Good afternoon everyone,",
+    "I'm [name].",
+    "Today we're going to talk about Apple.",
+    "We'll use a structured way to look at its antitrust challenges and then suggest some solutions."
+  ]},
+  { title: "Page 2 · Introduction", sentences: [
+    "So first, a quick introduction to Apple.",
+    "It's one of the most valuable tech companies, with over 1.5 billion devices in use.",
+    "But right now, it's facing quite serious antitrust issues in the US, Europe, and other regions.",
+    "The main problems are: the 30% App Store commission, limits on third-party payments, iMessage not being cross-platform, and high switching costs.",
+    "So to address this, we suggest three main actions: open app distribution, adjust the commission model, and allow more payment options."
+  ]},
+  { title: "Page 3 · Problem Definition", sentences: [
+    "Now let's define the problem.",
+    "Apple has a very strong ecosystem and makes a lot of service revenue.",
+    "But at the same time, many countries are investigating it.",
+    "The key issues are high fees, no alternative app stores, restricted payments, and user lock-in.",
+    "So the challenge here is: how can Apple follow regulations, but still keep its revenue and security?"
+  ]},
+  { title: "Page 4 · Monopoly Accusation", sentences: [
+    "So why is Apple being accused of monopoly?",
+    "Mainly two reasons.",
+    "First, market power. Apple controls the App Store, charges 30%, and doesn't allow other app stores.",
+    "Second, ecosystem lock-in. iMessage doesn't work across platforms, NFC is limited to Apple Pay, and switching is costly.",
+    "So both users and developers become very dependent on Apple."
+  ]},
+  { title: "Page 5 · Solutions Overview", sentences: [
+    "Now let's look at the solutions.",
+    "There are two main directions: breaking the distribution monopoly and reducing lock-in.",
+    "So we suggest things like: tiered fees, opening app distribution, allowing more payment options, improving messaging, opening NFC, and enabling data portability.",
+    "Overall, the idea is to make the ecosystem more open, but still keep control."
+  ]},
+  { title: "Page 6 · Prioritisation", sentences: [
+    "Here we prioritise the solutions using a 2×2 matrix.",
+    "The most important ones are the \"Do First\" actions: high impact and easy to implement.",
+    "These include opening app distribution, adjusting fees, and allowing external payments.",
+    "Quick wins include cross-platform messaging.",
+    "Some actions, like data portability, are important but take more time.",
+    "So we focus on what is both impactful and doable first."
+  ]},
+  { title: "Page 7 · Workplan", sentences: [
+    "This is our workplan, focusing on three areas.",
+    "First, app distribution. How can Apple allow sideloading but still stay secure?",
+    "We suggest allowing it with a verification process.",
+    "Second, commission fees. How can Apple reduce fees but still keep revenue?",
+    "We suggest tiered fees and external payments.",
+    "Third, payment access. How can Apple open NFC safely?",
+    "We suggest controlled APIs and monitoring transactions."
+  ]},
+  { title: "Page 8 · Deep Dive: Tiered Fees", sentences: [
+    "Here we go deeper into one solution: tiered fees.",
+    "The key question is how to lower fees but still keep revenue.",
+    "We compare competitors like Google and Samsung, and test different fee levels.",
+    "What we find is that lower fees can attract more developers and increase spending.",
+    "So even if commission drops, Apple can gain volume and reduce legal risk."
+  ]},
+  { title: "Page 9 · Conclusion", sentences: [
+    "Finally, our conclusion.",
+    "First, the situation: Apple has a strong ecosystem and high revenue.",
+    "Second, the problem: it faces global antitrust pressure.",
+    "And third, the solution: open app distribution, introduce tiered fees and external payments, and open NFC.",
+    "These help Apple stay compliant while still protecting its business."
+  ]}
 ];
 
 let currentPage = 0;
@@ -593,55 +521,66 @@ let completedSentences = new Set();
 let completedPages = new Set();
 
 const synth = window.speechSynthesis;
-let englishVoice = null;
+let selectedVoice = null;
+let enVoices = [];
 
-const preferredVoices = [
-  'Samantha (Enhanced)', 'Samantha (Premium)', 'Samantha',
-  'Karen (Enhanced)', 'Karen (Premium)', 'Karen',
-  'Daniel (Enhanced)', 'Daniel (Premium)', 'Daniel',
-  'Moira (Enhanced)', 'Moira',
-  'Tessa (Enhanced)', 'Tessa',
-  'Google US English', 'Google UK English Female',
-  'Microsoft Zira', 'Microsoft Jenny',
-  'English United States',
+const allowedVoices = [
+  'Google US English', 'Google UK English Female', 'Google UK English Male',
+  'Samantha', 'Karen', 'Daniel', 'Moira', 'Tessa',
 ];
+const defaultVoiceName = 'Google US English';
 
-function loadVoices() {
-  const voices = synth.getVoices();
-  if (!voices.length) return;
+function populateVoices() {
+  const all = synth.getVoices();
+  if (!all.length) return;
 
-  const enVoices = voices.filter(v => v.lang.startsWith('en'));
-
-  for (const name of preferredVoices) {
-    const found = enVoices.find(v => v.name.includes(name));
-    if (found) { englishVoice = found; return; }
-  }
-
-  const enhanced = enVoices.find(v =>
-    /enhanced|premium|natural|neural/i.test(v.name)
+  enVoices = all.filter(v =>
+    v.lang.startsWith('en') && allowedVoices.some(name => v.name.includes(name))
   );
-  if (enhanced) { englishVoice = enhanced; return; }
+  if (!enVoices.length) return;
 
-  const nonCompact = enVoices.find(v => !/compact/i.test(v.name));
-  englishVoice = nonCompact || enVoices[0] || voices[0];
+  enVoices.sort((a, b) => {
+    const ai = allowedVoices.findIndex(n => a.name.includes(n));
+    const bi = allowedVoices.findIndex(n => b.name.includes(n));
+    return ai - bi;
+  });
+
+  const sel = document.getElementById('voiceSelect');
+  const savedVoice = localStorage.getItem('speech-voice');
+  const pickName = savedVoice || defaultVoiceName;
+
+  sel.innerHTML = enVoices.map((v, i) => {
+    const label = v.name;
+    return `<option value="${i}" ${v.name.includes(pickName) ? 'selected' : ''}>${label} (${v.lang})</option>`;
+  }).join('');
+
+  const picked = enVoices.find(v => v.name.includes(pickName));
+  selectedVoice = picked || enVoices[0];
 }
-synth.onvoiceschanged = loadVoices;
-setTimeout(loadVoices, 100);
-setTimeout(loadVoices, 500);
-loadVoices();
+
+synth.onvoiceschanged = populateVoices;
+setTimeout(populateVoices, 100);
+setTimeout(populateVoices, 500);
+populateVoices();
+
+document.getElementById('voiceSelect').addEventListener('change', e => {
+  selectedVoice = enVoices[parseInt(e.target.value)];
+  localStorage.setItem('speech-voice', selectedVoice.name);
+  synth.cancel();
+  speak('Hello, this is my voice.', speechRate);
+});
 
 function speak(text, rate, onEnd) {
   synth.cancel();
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'en-US';
   u.rate = rate || speechRate;
-  u.pitch = 1.02;
+  u.pitch = 1.0;
   u.volume = 1;
-  if (englishVoice) u.voice = englishVoice;
+  if (selectedVoice) u.voice = selectedVoice;
   if (onEnd) u.onend = onEnd;
   u.onerror = () => { if (onEnd) onEnd(); };
 
-  // Chrome bug workaround: long utterances get cut off without periodic resume
   let keepAlive;
   if (/Chrome/i.test(navigator.userAgent) && !/Edg/i.test(navigator.userAgent)) {
     keepAlive = setInterval(() => {
@@ -664,9 +603,9 @@ function speakWord(word) {
   const u = new SpeechSynthesisUtterance(clean);
   u.lang = 'en-US';
   u.rate = 0.75;
-  u.pitch = 1.02;
+  u.pitch = 1.0;
   u.volume = 1;
-  if (englishVoice) u.voice = englishVoice;
+  if (selectedVoice) u.voice = selectedVoice;
   synth.speak(u);
 }
 
@@ -677,22 +616,55 @@ function makeClickableWords(text) {
   }).join('');
 }
 
+// --- Lightweight UI updates (no DOM rebuild) ---
+
+function updateCardStates() {
+  document.querySelectorAll('.sentence-card').forEach(card => {
+    const idx = parseInt(card.dataset.idx);
+    const key = `${currentPage}-${idx}`;
+    card.classList.toggle('active', idx === currentSentence);
+    card.classList.toggle('completed', completedSentences.has(key));
+  });
+}
+
+function updatePageBtns() {
+  document.querySelectorAll('.page-btn').forEach(btn => {
+    const p = parseInt(btn.dataset.page);
+    btn.classList.toggle('active', p === currentPage);
+    btn.classList.toggle('completed', completedPages.has(p));
+  });
+}
+
+function updateProgress() {
+  const total = pages.reduce((a, p) => a + p.sentences.length, 0);
+  document.getElementById('progressFill').style.width = `${(completedSentences.size / total) * 100}%`;
+}
+
+function updateNavButtons() {
+  document.getElementById('prevBtn').disabled = currentPage === 0;
+  document.getElementById('nextBtn').disabled = currentPage === pages.length - 1;
+}
+
+function updatePlayAllBtn() {
+  const btn = document.getElementById('playAllBtn');
+  if (isPlayingAll) { btn.innerHTML = '⏸ 暂停'; } 
+  else { btn.innerHTML = '▶ 播放全部'; }
+}
+
+// --- Full rebuild (only on page/mode change) ---
+
 function renderPageSelector() {
-  const el = document.getElementById('pageSelector');
-  el.innerHTML = pages.map((_, i) =>
+  document.getElementById('pageSelector').innerHTML = pages.map((_, i) =>
     `<button class="page-btn ${i === currentPage ? 'active' : ''} ${completedPages.has(i) ? 'completed' : ''}" data-page="${i}">${i + 1}</button>`
   ).join('');
 }
 
 function renderSentenceView() {
   const page = pages[currentPage];
-  const el = document.getElementById('sentenceView');
-  el.innerHTML = `<div class="page-title">${page.title}</div>` +
+  document.getElementById('sentenceView').innerHTML = `<div class="page-title">${page.title}</div>` +
     page.sentences.map((s, i) => {
       const key = `${currentPage}-${i}`;
-      const isActive = i === currentSentence;
-      const isCompleted = completedSentences.has(key);
-      return `<div class="sentence-card ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}" data-idx="${i}">
+      return `<div class="sentence-card ${i === currentSentence ? 'active' : ''} ${completedSentences.has(key) ? 'completed' : ''}" data-idx="${i}">
         <div class="sentence-header">
           <span class="sentence-num">${i + 1} / ${page.sentences.length}</span>
           <button class="sentence-play" data-idx="${i}">
@@ -706,8 +678,8 @@ function renderSentenceView() {
 
 function renderFullPageView() {
   const page = pages[currentPage];
-  const el = document.getElementById('fullPageView');
   const allText = page.sentences.join(' ');
+  const el = document.getElementById('fullPageView');
   el.innerHTML = `<div class="page-title">${page.title}</div>
     <button class="full-play-btn" id="fullPlayBtn">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -717,7 +689,7 @@ function renderFullPageView() {
       <div class="sentence-text">${makeClickableWords(allText)}</div>
     </div>`;
 
-  document.getElementById('fullPlayBtn')?.addEventListener('click', () => {
+  document.getElementById('fullPlayBtn').addEventListener('click', () => {
     const btn = document.getElementById('fullPlayBtn');
     btn.classList.add('playing');
     btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> 播放中...`;
@@ -729,7 +701,7 @@ function renderFullPageView() {
   });
 }
 
-function render() {
+function fullRender() {
   renderPageSelector();
   if (mode === 'sentence') {
     document.getElementById('sentenceView').classList.remove('hidden');
@@ -744,48 +716,41 @@ function render() {
   updateNavButtons();
 }
 
-function updateProgress() {
-  const total = pages.reduce((a, p) => a + p.sentences.length, 0);
-  const done = completedSentences.size;
-  document.getElementById('progressFill').style.width = `${(done / total) * 100}%`;
-}
-
-function updateNavButtons() {
-  document.getElementById('prevBtn').disabled = currentPage === 0;
-  document.getElementById('nextBtn').disabled = currentPage === pages.length - 1;
-}
+// --- Actions ---
 
 function markSentenceCompleted(pageIdx, sentIdx) {
   completedSentences.add(`${pageIdx}-${sentIdx}`);
-  const page = pages[pageIdx];
-  const allDone = page.sentences.every((_, i) => completedSentences.has(`${pageIdx}-${i}`));
+  const allDone = pages[pageIdx].sentences.every((_, i) => completedSentences.has(`${pageIdx}-${i}`));
   if (allDone) completedPages.add(pageIdx);
 }
 
 function markPageCompleted() {
-  pages[currentPage].sentences.forEach((_, i) => {
-    completedSentences.add(`${currentPage}-${i}`);
-  });
+  pages[currentPage].sentences.forEach((_, i) => completedSentences.add(`${currentPage}-${i}`));
   completedPages.add(currentPage);
-  render();
+  updateCardStates();
+  updatePageBtns();
+  updateProgress();
 }
 
 function playSentence(idx) {
   synth.cancel();
   isPlayingAll = false;
+  updatePlayAllBtn();
+
   currentSentence = idx;
-  render();
+  updateCardStates();
 
   const card = document.querySelector(`.sentence-card[data-idx="${idx}"]`);
   const btn = card?.querySelector('.sentence-play');
   if (btn) btn.classList.add('playing');
-
   card?.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
   speak(pages[currentPage].sentences[idx], speechRate, () => {
     if (btn) btn.classList.remove('playing');
     markSentenceCompleted(currentPage, idx);
-    render();
+    updateCardStates();
+    updatePageBtns();
+    updateProgress();
   });
 }
 
@@ -794,6 +759,7 @@ function playAll() {
     synth.cancel();
     isPlayingAll = false;
     updatePlayAllBtn();
+    document.querySelectorAll('.sentence-play.playing').forEach(b => b.classList.remove('playing'));
     return;
   }
 
@@ -809,14 +775,19 @@ function playAll() {
       return;
     }
     currentSentence = idx;
-    render();
+    updateCardStates();
+
     const card = document.querySelector(`.sentence-card[data-idx="${idx}"]`);
     card?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     const btn = card?.querySelector('.sentence-play');
     if (btn) btn.classList.add('playing');
 
     speak(pages[currentPage].sentences[idx], speechRate, () => {
+      if (btn) btn.classList.remove('playing');
       markSentenceCompleted(currentPage, idx);
+      updateCardStates();
+      updatePageBtns();
+      updateProgress();
       idx++;
       playNext();
     });
@@ -824,36 +795,28 @@ function playAll() {
   playNext();
 }
 
-function updatePlayAllBtn() {
-  const btn = document.getElementById('playAllBtn');
-  if (isPlayingAll) {
-    btn.innerHTML = '⏸ 暂停';
-    btn.classList.add('playing');
-  } else {
-    btn.innerHTML = '▶ 播放全部';
-    btn.classList.remove('playing');
-  }
-}
+// --- Event listeners ---
 
-// Event listeners
 document.getElementById('pageSelector').addEventListener('click', e => {
   const btn = e.target.closest('.page-btn');
   if (!btn) return;
   synth.cancel();
   isPlayingAll = false;
+  updatePlayAllBtn();
   currentPage = parseInt(btn.dataset.page);
   currentSentence = 0;
-  render();
+  fullRender();
 });
 
 document.querySelectorAll('.mode-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     synth.cancel();
     isPlayingAll = false;
+    updatePlayAllBtn();
     mode = btn.dataset.mode;
     document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    render();
+    fullRender();
   });
 });
 
@@ -861,8 +824,7 @@ document.getElementById('content').addEventListener('click', e => {
   const word = e.target.closest('.word');
   if (word) {
     e.stopPropagation();
-    const w = word.dataset.word;
-    speakWord(w);
+    speakWord(word.dataset.word);
 
     document.querySelectorAll('.word.word-playing').forEach(el => el.classList.remove('word-playing'));
     word.classList.add('word-playing');
@@ -870,7 +832,7 @@ document.getElementById('content').addEventListener('click', e => {
 
     const tooltip = document.getElementById('wordTooltip');
     const rect = word.getBoundingClientRect();
-    tooltip.textContent = w.replace(/[^a-zA-Z'-]/g, '');
+    tooltip.textContent = word.dataset.word.replace(/[^a-zA-Z'-]/g, '');
     tooltip.style.left = `${rect.left + rect.width / 2 - 40}px`;
     tooltip.style.top = `${rect.top - 40}px`;
     tooltip.classList.add('show');
@@ -886,49 +848,41 @@ document.getElementById('content').addEventListener('click', e => {
 
   const card = e.target.closest('.sentence-card');
   if (card && mode === 'sentence') {
-    const idx = parseInt(card.dataset.idx);
-    currentSentence = idx;
-    render();
+    currentSentence = parseInt(card.dataset.idx);
+    updateCardStates();
   }
 });
 
 document.getElementById('prevBtn').addEventListener('click', () => {
   if (currentPage > 0) {
-    synth.cancel();
-    isPlayingAll = false;
-    currentPage--;
-    currentSentence = 0;
-    render();
+    synth.cancel(); isPlayingAll = false; updatePlayAllBtn();
+    currentPage--; currentSentence = 0;
+    fullRender();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 });
 
 document.getElementById('nextBtn').addEventListener('click', () => {
   if (currentPage < pages.length - 1) {
-    synth.cancel();
-    isPlayingAll = false;
-    currentPage++;
-    currentSentence = 0;
-    render();
+    synth.cancel(); isPlayingAll = false; updatePlayAllBtn();
+    currentPage++; currentSentence = 0;
+    fullRender();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 });
 
 document.getElementById('playAllBtn').addEventListener('click', () => {
-  if (mode === 'sentence') {
-    playAll();
-  } else {
-    document.getElementById('fullPlayBtn')?.click();
-  }
+  if (mode === 'sentence') playAll();
+  else document.getElementById('fullPlayBtn')?.click();
 });
 
 document.getElementById('speedSlider').addEventListener('input', e => {
   speechRate = parseFloat(e.target.value);
-  const display = speechRate % 1 === 0 ? speechRate.toFixed(1) : speechRate.toFixed(2).replace(/0$/, '');
-  document.getElementById('speedValue').textContent = display + 'x';
+  const d = speechRate % 1 === 0 ? speechRate.toFixed(1) : speechRate.toFixed(2).replace(/0$/, '');
+  document.getElementById('speedValue').textContent = d + 'x';
 });
 
-render();
+fullRender();
 </script>
 </body>
 </html>
