@@ -521,45 +521,42 @@ let completedSentences = new Set();
 let completedPages = new Set();
 
 const synth = window.speechSynthesis;
-let selectedVoiceId = null; // 'google-online' or index into nativeVoices
-let nativeVoices = [];
-let currentAudio = null; // for Google online TTS
+let selectedVoice = null;
+let enVoices = [];
 
-const GOOGLE_ONLINE_ID = 'google-online';
-const nativePreferred = ['Samantha', 'Karen', 'Daniel', 'Moira', 'Tessa'];
+const preferredVoices = [
+  'Samantha', 'Karen', 'Daniel', 'Moira', 'Tessa',
+  'Google US English', 'Google UK English Female', 'Google UK English Male',
+];
 
-function isGoogleOnline() { return selectedVoiceId === GOOGLE_ONLINE_ID; }
+function stopAll() { synth.cancel(); }
 
 function populateVoices() {
   const all = synth.getVoices();
   if (!all.length) return;
 
   const allEn = all.filter(v => v.lang.startsWith('en'));
-  const matched = allEn.filter(v => nativePreferred.some(n => v.name.includes(n)));
-  nativeVoices = matched.length ? matched : allEn;
+  const matched = allEn.filter(v => preferredVoices.some(n => v.name.includes(n)));
+  enVoices = matched.length ? matched : allEn;
 
-  nativeVoices.sort((a, b) => {
-    const ai = nativePreferred.findIndex(n => a.name.includes(n));
-    const bi = nativePreferred.findIndex(n => b.name.includes(n));
+  enVoices.sort((a, b) => {
+    const ai = preferredVoices.findIndex(n => a.name.includes(n));
+    const bi = preferredVoices.findIndex(n => b.name.includes(n));
     return (ai >= 0 ? ai : 900) - (bi >= 0 ? bi : 900);
   });
 
   const sel = document.getElementById('voiceSelect');
-  const saved = localStorage.getItem('speech-voice') || GOOGLE_ONLINE_ID;
+  const saved = localStorage.getItem('speech-voice');
 
-  let html = `<option value="${GOOGLE_ONLINE_ID}" ${saved === GOOGLE_ONLINE_ID ? 'selected' : ''}>Google 在线语音 ★</option>`;
-  html += nativeVoices.map((v, i) =>
-    `<option value="${i}" ${saved === v.name ? 'selected' : ''}>${v.name} (${v.lang})</option>`
+  sel.innerHTML = enVoices.map((v, i) =>
+    `<option value="${i}" ${v.name === saved ? 'selected' : ''}>${v.name} (${v.lang})</option>`
   ).join('');
-  sel.innerHTML = html;
 
-  if (saved === GOOGLE_ONLINE_ID) {
-    selectedVoiceId = GOOGLE_ONLINE_ID;
-  } else {
-    const idx = nativeVoices.findIndex(v => v.name === saved);
-    selectedVoiceId = idx >= 0 ? idx : GOOGLE_ONLINE_ID;
-    if (idx < 0) sel.value = GOOGLE_ONLINE_ID;
+  if (saved) {
+    const found = enVoices.find(v => v.name === saved);
+    if (found) { selectedVoice = found; return; }
   }
+  selectedVoice = enVoices[0];
 }
 
 synth.onvoiceschanged = populateVoices;
@@ -568,76 +565,20 @@ setTimeout(populateVoices, 500);
 populateVoices();
 
 document.getElementById('voiceSelect').addEventListener('change', e => {
-  const val = e.target.value;
-  if (val === GOOGLE_ONLINE_ID) {
-    selectedVoiceId = GOOGLE_ONLINE_ID;
-    localStorage.setItem('speech-voice', GOOGLE_ONLINE_ID);
-  } else {
-    selectedVoiceId = parseInt(val);
-    localStorage.setItem('speech-voice', nativeVoices[selectedVoiceId].name);
-  }
+  selectedVoice = enVoices[parseInt(e.target.value)];
+  localStorage.setItem('speech-voice', selectedVoice.name);
   stopAll();
   speak('Hello, this is my voice.', speechRate);
 });
 
-function stopAll() {
-  synth.cancel();
-  if (currentAudio) { currentAudio.pause(); currentAudio = null; }
-}
-
-// Split text into chunks <=190 chars at sentence/word boundary
-function splitText(text, maxLen) {
-  if (text.length <= maxLen) return [text];
-  const chunks = [];
-  let remaining = text;
-  while (remaining.length > 0) {
-    if (remaining.length <= maxLen) { chunks.push(remaining); break; }
-    let cut = remaining.lastIndexOf('. ', maxLen);
-    if (cut < 20) cut = remaining.lastIndexOf(', ', maxLen);
-    if (cut < 20) cut = remaining.lastIndexOf(' ', maxLen);
-    if (cut < 20) cut = maxLen;
-    chunks.push(remaining.slice(0, cut + 1).trim());
-    remaining = remaining.slice(cut + 1).trim();
-  }
-  return chunks;
-}
-
-function googleTtsUrl(text) {
-  return `https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=${encodeURIComponent(text)}`;
-}
-
-function playGoogleChunks(chunks, rate, onEnd) {
-  if (!chunks.length) { if (onEnd) onEnd(); return; }
-  const audio = new Audio(googleTtsUrl(chunks[0]));
-  audio.playbackRate = rate || speechRate;
-  currentAudio = audio;
-  audio.onended = () => {
-    currentAudio = null;
-    playGoogleChunks(chunks.slice(1), rate, onEnd);
-  };
-  audio.onerror = () => {
-    currentAudio = null;
-    if (onEnd) onEnd();
-  };
-  audio.play().catch(() => { if (onEnd) onEnd(); });
-}
-
 function speak(text, rate, onEnd) {
   stopAll();
-
-  if (isGoogleOnline()) {
-    const chunks = splitText(text, 190);
-    playGoogleChunks(chunks, rate, onEnd);
-    return;
-  }
-
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'en-US';
   u.rate = rate || speechRate;
   u.pitch = 1.0;
   u.volume = 1;
-  const voice = nativeVoices[selectedVoiceId];
-  if (voice) u.voice = voice;
+  if (selectedVoice) u.voice = selectedVoice;
   if (onEnd) u.onend = onEnd;
   u.onerror = () => { if (onEnd) onEnd(); };
 
@@ -660,23 +601,12 @@ function speakWord(word) {
   stopAll();
   const clean = word.replace(/[^a-zA-Z'-]/g, '');
   if (!clean) return;
-
-  if (isGoogleOnline()) {
-    const audio = new Audio(googleTtsUrl(clean));
-    audio.playbackRate = 0.8;
-    currentAudio = audio;
-    audio.onended = () => { currentAudio = null; };
-    audio.play().catch(() => {});
-    return;
-  }
-
   const u = new SpeechSynthesisUtterance(clean);
   u.lang = 'en-US';
   u.rate = 0.75;
   u.pitch = 1.0;
   u.volume = 1;
-  const voice = nativeVoices[selectedVoiceId];
-  if (voice) u.voice = voice;
+  if (selectedVoice) u.voice = selectedVoice;
   synth.speak(u);
 }
 
