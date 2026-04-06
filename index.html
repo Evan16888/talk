@@ -524,38 +524,44 @@ const synth = window.speechSynthesis;
 let selectedVoice = null;
 let enVoices = [];
 
-const allowedVoices = [
+const preferredVoices = [
   'Google US English', 'Google UK English Female', 'Google UK English Male',
   'Samantha', 'Karen', 'Daniel', 'Moira', 'Tessa',
 ];
-const defaultVoiceName = 'Google US English';
+const defaultOrder = ['Google US English', 'Samantha', 'Karen', 'Daniel'];
 
 function populateVoices() {
   const all = synth.getVoices();
   if (!all.length) return;
 
-  enVoices = all.filter(v =>
-    v.lang.startsWith('en') && allowedVoices.some(name => v.name.includes(name))
-  );
-  if (!enVoices.length) return;
+  const allEn = all.filter(v => v.lang.startsWith('en'));
+  const matched = allEn.filter(v => preferredVoices.some(name => v.name.includes(name)));
+  enVoices = matched.length ? matched : allEn;
 
   enVoices.sort((a, b) => {
-    const ai = allowedVoices.findIndex(n => a.name.includes(n));
-    const bi = allowedVoices.findIndex(n => b.name.includes(n));
-    return ai - bi;
+    const ai = preferredVoices.findIndex(n => a.name.includes(n));
+    const bi = preferredVoices.findIndex(n => b.name.includes(n));
+    const aRank = ai >= 0 ? ai : 900;
+    const bRank = bi >= 0 ? bi : 900;
+    return aRank - bRank;
   });
 
   const sel = document.getElementById('voiceSelect');
   const savedVoice = localStorage.getItem('speech-voice');
-  const pickName = savedVoice || defaultVoiceName;
 
   sel.innerHTML = enVoices.map((v, i) => {
-    const label = v.name;
-    return `<option value="${i}" ${v.name.includes(pickName) ? 'selected' : ''}>${label} (${v.lang})</option>`;
+    return `<option value="${i}" ${v.name === savedVoice ? 'selected' : ''}>${v.name} (${v.lang})</option>`;
   }).join('');
 
-  const picked = enVoices.find(v => v.name.includes(pickName));
-  selectedVoice = picked || enVoices[0];
+  if (savedVoice) {
+    const found = enVoices.find(v => v.name === savedVoice);
+    if (found) { selectedVoice = found; return; }
+  }
+  for (const name of defaultOrder) {
+    const found = enVoices.find(v => v.name.includes(name));
+    if (found) { selectedVoice = found; sel.value = enVoices.indexOf(found); return; }
+  }
+  selectedVoice = enVoices[0];
 }
 
 synth.onvoiceschanged = populateVoices;
