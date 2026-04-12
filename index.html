@@ -31,253 +31,106 @@ body {
 }
 
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  position: sticky; top: 0; z-index: 100;
   background: rgba(10, 10, 15, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   padding: 12px 16px;
 }
 
-.header-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
+.header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
 
 .header h1 {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 20px; font-weight: 700;
   background: linear-gradient(135deg, var(--accent2), var(--green));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 
 .mode-toggle { display: flex; gap: 6px; }
 
 .mode-btn {
-  padding: 7px 14px;
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text2);
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
+  padding: 7px 14px; border-radius: 20px; border: 1px solid var(--border);
+  background: var(--surface); color: var(--text2); font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
 }
 
-.mode-btn.active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-  box-shadow: 0 2px 12px var(--accent-glow);
-}
+.mode-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 2px 12px var(--accent-glow); }
 
-.page-selector {
-  display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  padding-bottom: 2px;
-}
+.page-selector { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
 .page-selector::-webkit-scrollbar { display: none; }
 
 .page-btn {
-  flex-shrink: 0;
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  border: 1.5px solid var(--border);
-  background: var(--surface);
-  color: var(--text2);
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.25s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-shrink: 0; width: 38px; height: 38px; border-radius: 10px;
+  border: 1.5px solid var(--border); background: var(--surface); color: var(--text2);
+  font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.25s;
+  display: flex; align-items: center; justify-content: center;
 }
 
 .page-btn.active {
   background: linear-gradient(135deg, var(--accent), #8b5cf6);
-  border-color: transparent;
-  color: #fff;
-  box-shadow: 0 2px 16px var(--accent-glow);
-  transform: scale(1.08);
+  border-color: transparent; color: #fff; box-shadow: 0 2px 16px var(--accent-glow); transform: scale(1.08);
 }
 
 .page-btn.completed { border-color: var(--green); color: var(--green); }
 
-.header-controls {
-  display: flex;
-  gap: 10px;
-  margin-top: 8px;
-  padding-top: 8px;
-  align-items: center;
-}
-
-.control-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 1;
-  min-width: 0;
-}
-
-.ctrl-label {
-  font-size: 13px;
-  color: var(--text2);
-  font-weight: 600;
-  white-space: nowrap;
-}
+.header-controls { display: flex; gap: 10px; margin-top: 8px; padding-top: 8px; align-items: center; }
+.control-row { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
+.ctrl-label { font-size: 13px; color: var(--text2); font-weight: 600; white-space: nowrap; }
 
 .speed-slider {
-  flex: 1;
-  -webkit-appearance: none;
-  appearance: none;
-  height: 4px;
-  border-radius: 2px;
-  background: var(--border);
-  outline: none;
-  min-width: 60px;
+  flex: 1; -webkit-appearance: none; appearance: none; height: 4px;
+  border-radius: 2px; background: var(--border); outline: none; min-width: 60px;
 }
-
 .speed-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--accent);
-  cursor: pointer;
-  box-shadow: 0 2px 8px var(--accent-glow);
+  -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--accent); cursor: pointer; box-shadow: 0 2px 8px var(--accent-glow);
 }
 
-.speed-value {
-  font-size: 14px;
-  color: var(--accent2);
-  font-weight: 700;
-  min-width: 36px;
-  text-align: center;
-}
+.speed-value { font-size: 14px; color: var(--accent2); font-weight: 700; min-width: 36px; text-align: center; }
 
 .common-select {
-  flex: 1;
-  min-width: 0;
-  padding: 7px 10px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
-  font-size: 13px;
-  font-weight: 500;
-  outline: none;
-  -webkit-appearance: none;
-  appearance: none;
+  flex: 1; min-width: 0; padding: 7px 10px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  font-size: 13px; font-weight: 500; outline: none;
+  -webkit-appearance: none; appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238888a8'%3E%3Cpath d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  padding-right: 28px;
+  background-repeat: no-repeat; background-position: right 10px center; padding-right: 28px;
   text-overflow: ellipsis;
 }
 
-.progress-bar {
-  height: 2px;
-  background: var(--border);
-  border-radius: 1px;
-  overflow: hidden;
-  margin-top: 8px;
-}
+.progress-bar { height: 2px; background: var(--border); border-radius: 1px; overflow: hidden; margin-top: 8px; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 1px; transition: width 0.3s; }
 
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent), var(--green));
-  border-radius: 1px;
-  transition: width 0.3s;
-}
+.content { padding: 16px; padding-bottom: 100px; }
 
-.content {
-  padding: 16px;
-  padding-bottom: 100px;
-}
-
-.page-title {
-  font-size: 15px;
-  color: var(--text2);
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  font-weight: 600;
-  margin-bottom: 16px;
-}
+.page-title { font-size: 15px; color: var(--text2); text-transform: uppercase; letter-spacing: 1.2px; font-weight: 600; margin-bottom: 16px; }
 
 .sentence-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px;
-  margin-bottom: 12px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 18px; margin-bottom: 12px;
   transition: border-color 0.3s, box-shadow 0.3s, opacity 0.3s;
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
 }
-
 .sentence-card::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--border);
-  border-radius: 0 2px 2px 0;
-  transition: background 0.3s;
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--border); border-radius: 0 2px 2px 0; transition: background 0.3s;
 }
-
 .sentence-card.active::before { background: linear-gradient(180deg, var(--accent), var(--green)); }
 .sentence-card.active { border-color: var(--accent); box-shadow: 0 4px 24px var(--accent-glow); }
 .sentence-card.completed::before { background: var(--green); }
 .sentence-card.completed { border-color: rgba(0, 206, 201, 0.3); opacity: 0.7; }
 
-.sentence-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.sentence-num {
-  font-size: 13px;
-  color: var(--text2);
-  font-weight: 600;
-  background: var(--surface2);
-  padding: 4px 10px;
-  border-radius: 6px;
-}
+.sentence-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.sentence-num { font-size: 13px; color: var(--text2); font-weight: 600; background: var(--surface2); padding: 4px 10px; border-radius: 6px; }
 
 .sentence-play {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: none;
-  background: linear-gradient(135deg, var(--accent), #8b5cf6);
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-  box-shadow: 0 2px 12px var(--accent-glow);
+  width: 40px; height: 40px; border-radius: 50%; border: none;
+  background: linear-gradient(135deg, var(--accent), #8b5cf6); color: #fff;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; box-shadow: 0 2px 12px var(--accent-glow);
 }
-
 .sentence-play:active { transform: scale(0.92); }
-
-.sentence-play.playing {
-  background: linear-gradient(135deg, var(--green), #00b894);
-  animation: pulse-ring 1.5s infinite;
-}
+.sentence-play.playing { background: linear-gradient(135deg, var(--green), #00b894); animation: pulse-ring 1.5s infinite; }
 
 @keyframes pulse-ring {
   0% { box-shadow: 0 0 0 0 rgba(0, 206, 201, 0.4); }
@@ -286,122 +139,86 @@ body {
 }
 
 .sentence-text {
-  font-size: 19px;
-  line-height: 1.8;
-  color: var(--text);
-  letter-spacing: 0.3px;
-  word-spacing: 1px;
+  font-size: 19px; line-height: 2.8; color: var(--text);
+  letter-spacing: 0.3px; word-spacing: 1px;
 }
 
 .sentence-text .word {
-  display: inline;
-  cursor: pointer;
-  padding: 2px 1px;
-  border-radius: 4px;
-  transition: all 0.15s;
+  display: inline-flex; flex-direction: column; align-items: center;
+  cursor: pointer; padding: 0 2px; border-radius: 4px; transition: all 0.15s;
+  vertical-align: baseline; position: relative;
 }
 
-.sentence-text .word:active { background: var(--accent-glow); color: var(--accent2); }
-.sentence-text .word.word-playing { background: rgba(108, 92, 231, 0.25); color: var(--accent2); }
+.sentence-text .word:active { background: var(--accent-glow); }
+.sentence-text .word.word-playing { background: rgba(108, 92, 231, 0.25); }
+
+.word .w-ipa {
+  font-size: 10px; line-height: 1.1; color: var(--accent2); opacity: 0.7;
+  font-style: italic; white-space: nowrap; letter-spacing: 0;
+}
+
+.word .w-en { line-height: 1.3; }
+
+.hide-ipa .w-ipa { display: none; }
+.hide-ipa .sentence-text { line-height: 1.8; }
+
+.sentence-zh {
+  margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border);
+  font-size: 15px; line-height: 1.6; color: var(--text2); letter-spacing: 0.5px;
+}
 
 .full-page-view { display: none; }
 .full-page-view.active { display: block; }
 
-.full-text-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px;
-  margin-bottom: 12px;
-}
-
-.full-text-card .sentence-text { font-size: 20px; line-height: 1.9; }
+.full-text-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 12px; }
+.full-text-card .sentence-text { font-size: 20px; line-height: 2.9; }
+.full-text-card .full-zh { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 16px; line-height: 1.8; color: var(--text2); }
 
 .full-play-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  padding: 16px;
-  border-radius: var(--radius);
-  border: none;
-  background: linear-gradient(135deg, var(--accent), #8b5cf6);
-  color: #fff;
-  font-size: 17px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: 0 4px 20px var(--accent-glow);
-  margin-bottom: 12px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; padding: 16px; border-radius: var(--radius); border: none;
+  background: linear-gradient(135deg, var(--accent), #8b5cf6); color: #fff;
+  font-size: 17px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+  box-shadow: 0 4px 20px var(--accent-glow); margin-bottom: 12px;
 }
-
 .full-play-btn:active { transform: scale(0.97); }
 .full-play-btn.playing { background: linear-gradient(135deg, var(--green), #00b894); }
 
 .bottom-nav {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
+  position: fixed; bottom: 0; left: 0; right: 0;
   background: rgba(10, 10, 15, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid var(--border);
-  padding: 10px 16px;
-  padding-bottom: max(10px, env(safe-area-inset-bottom));
-  display: flex;
-  gap: 10px;
-  z-index: 100;
+  padding: 10px 16px; padding-bottom: max(10px, env(safe-area-inset-bottom));
+  display: flex; gap: 10px; z-index: 100;
 }
 
 .nav-btn {
-  flex: 1;
-  padding: 14px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
+  flex: 1; padding: 14px; border-radius: 12px; border: 1px solid var(--border);
+  background: var(--surface); color: var(--text); font-size: 15px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;
 }
-
 .nav-btn:active { transform: scale(0.96); }
-
-.nav-btn.primary {
-  background: linear-gradient(135deg, var(--accent), #8b5cf6);
-  border-color: transparent;
-  color: #fff;
-  box-shadow: 0 2px 16px var(--accent-glow);
-}
-
+.nav-btn.primary { background: linear-gradient(135deg, var(--accent), #8b5cf6); border-color: transparent; color: #fff; box-shadow: 0 2px 16px var(--accent-glow); }
 .nav-btn:disabled { opacity: 0.4; pointer-events: none; }
 
 .word-tooltip {
-  position: fixed;
-  background: var(--surface2);
-  border: 1px solid var(--accent);
-  border-radius: 10px;
-  padding: 10px 16px;
-  font-size: 16px;
-  color: var(--accent2);
-  font-weight: 600;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-  z-index: 200;
-  pointer-events: none;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: all 0.2s;
+  position: fixed; background: var(--surface2); border: 1px solid var(--accent);
+  border-radius: 10px; padding: 10px 16px; font-size: 16px; color: var(--accent2);
+  font-weight: 600; box-shadow: 0 8px 32px rgba(0,0,0,0.5); z-index: 200;
+  pointer-events: none; opacity: 0; transform: translateY(4px); transition: all 0.2s;
 }
-
 .word-tooltip.show { opacity: 1; transform: translateY(0); }
 
 .sentence-view { display: block; }
 .sentence-view.hidden { display: none; }
+
+.ipa-toggle {
+  padding: 5px 10px; border-radius: 16px; border: 1px solid var(--border);
+  background: var(--surface); color: var(--green); font-size: 12px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+.ipa-toggle.off { color: var(--text2); }
 </style>
 </head>
 <body>
@@ -410,6 +227,7 @@ body {
   <div class="header-top">
     <h1>🎤 Speech Practice</h1>
     <div class="mode-toggle">
+      <button class="ipa-toggle" id="ipaToggle">音标</button>
       <button class="mode-btn active" data-mode="sentence">逐句</button>
       <button class="mode-btn" data-mode="full">整页</button>
     </div>
@@ -451,261 +269,375 @@ body {
 <div class="word-tooltip" id="wordTooltip"></div>
 
 <script>
-const courses = {
-  "7027": {
-    name: "7027 · Apple Antitrust",
-    pages: [
-      { title: "Page 1 · Opening", sentences: [
-        "Good afternoon everyone,",
-        "I'm [name].",
-        "Today we're going to talk about Apple.",
-        "We'll use a structured way to look at its antitrust challenges and then suggest some solutions."
-      ]},
-      { title: "Page 2 · Introduction", sentences: [
-        "So first, a quick introduction to Apple.",
-        "It's one of the most valuable tech companies, with over 1.5 billion devices in use.",
-        "But right now, it's facing quite serious antitrust issues in the US, Europe, and other regions.",
-        "The main problems are: the 30% App Store commission, limits on third-party payments, iMessage not being cross-platform, and high switching costs.",
-        "So to address this, we suggest three main actions: open app distribution, adjust the commission model, and allow more payment options."
-      ]},
-      { title: "Page 3 · Problem Definition", sentences: [
-        "Now let's define the problem.",
-        "Apple has a very strong ecosystem and makes a lot of service revenue.",
-        "But at the same time, many countries are investigating it.",
-        "The key issues are high fees, no alternative app stores, restricted payments, and user lock-in.",
-        "So the challenge here is: how can Apple follow regulations, but still keep its revenue and security?"
-      ]},
-      { title: "Page 4 · Monopoly Accusation", sentences: [
-        "So why is Apple being accused of monopoly?",
-        "Mainly two reasons.",
-        "First, market power. Apple controls the App Store, charges 30%, and doesn't allow other app stores.",
-        "Second, ecosystem lock-in. iMessage doesn't work across platforms, NFC is limited to Apple Pay, and switching is costly.",
-        "So both users and developers become very dependent on Apple."
-      ]},
-      { title: "Page 5 · Solutions Overview", sentences: [
-        "Now let's look at the solutions.",
-        "There are two main directions: breaking the distribution monopoly and reducing lock-in.",
-        "So we suggest things like: tiered fees, opening app distribution, allowing more payment options, improving messaging, opening NFC, and enabling data portability.",
-        "Overall, the idea is to make the ecosystem more open, but still keep control."
-      ]},
-      { title: "Page 6 · Prioritisation", sentences: [
-        "Here we prioritise the solutions using a 2×2 matrix.",
-        "The most important ones are the \"Do First\" actions: high impact and easy to implement.",
-        "These include opening app distribution, adjusting fees, and allowing external payments.",
-        "Quick wins include cross-platform messaging.",
-        "Some actions, like data portability, are important but take more time.",
-        "So we focus on what is both impactful and doable first."
-      ]},
-      { title: "Page 7 · Workplan", sentences: [
-        "This is our workplan, focusing on three areas.",
-        "First, app distribution. How can Apple allow sideloading but still stay secure?",
-        "We suggest allowing it with a verification process.",
-        "Second, commission fees. How can Apple reduce fees but still keep revenue?",
-        "We suggest tiered fees and external payments.",
-        "Third, payment access. How can Apple open NFC safely?",
-        "We suggest controlled APIs and monitoring transactions."
-      ]},
-      { title: "Page 8 · Deep Dive: Tiered Fees", sentences: [
-        "Here we go deeper into one solution: tiered fees.",
-        "The key question is how to lower fees but still keep revenue.",
-        "We compare competitors like Google and Samsung, and test different fee levels.",
-        "What we find is that lower fees can attract more developers and increase spending.",
-        "So even if commission drops, Apple can gain volume and reduce legal risk."
-      ]},
-      { title: "Page 9 · Conclusion", sentences: [
-        "Finally, our conclusion.",
-        "First, the situation: Apple has a strong ecosystem and high revenue.",
-        "Second, the problem: it faces global antitrust pressure.",
-        "And third, the solution: open app distribution, introduce tiered fees and external payments, and open NFC.",
-        "These help Apple stay compliant while still protecting its business."
-      ]}
-    ]
-  },
-  "7032": {
-    name: "7032 · BYD Marketing",
-    pages: [
-      { title: "Page 1 · Opening", sentences: [
-        "Good afternoon everyone.",
-        "Today we are going to present BYD and its marketing strategy in the digital world.",
-        "In this presentation, we will first give a brief overview of the company,",
-        "then analyse the external environment using PESTLE and Porter's Five Forces,",
-        "followed by its STP strategy and competitor comparison,",
-        "and finally we will discuss the challenges and key success factors."
-      ]},
-      { title: "Page 2 · Company Overview", sentences: [
-        "So first, let's start with a quick overview of BYD.",
-        "BYD, which stands for \"Build Your Dreams\", is one of the largest electric vehicle producers in the world, with around 4.6 million vehicles sold in 2025.",
-        "One key advantage of BYD is that it is vertically integrated, meaning it produces its own batteries, chips, and key components.",
-        "In terms of the market environment, global factors like rising oil prices and geopolitical tensions are accelerating the shift towards electric vehicles.",
-        "So in this presentation, we will analyse BYD from different perspectives to better understand its strategy and performance."
-      ]},
-      { title: "Page 3 · Global Sales", sentences: [
-        "Next, let's look at BYD's global sales performance.",
-        "As we can see, BYD has experienced strong growth over the past three years.",
-        "Its total sales increased significantly, reaching around 4.6 million vehicles in 2025.",
-        "This shows that the company is expanding very quickly, especially in overseas markets.",
-        "Overall, this highlights BYD's increasing competitiveness in the global EV market."
-      ]},
-      { title: "Page 4 · PESTLE Analysis", sentences: [
-        "So now, let's move on to the PESTLE analysis.",
-        "From a political perspective, government policies and subsidies support the EV industry.",
-        "Economically, rising oil prices encourage people to switch to electric vehicles.",
-        "Socially, growing environmental awareness is also driving demand.",
-        "In terms of technology, BYD has strong innovation, especially in battery development.",
-        "However, there are also legal and environmental challenges, such as regulations and sustainability requirements.",
-        "So overall, the environment creates both opportunities and challenges."
-      ]},
-      { title: "Page 5 · Porter's Five Forces", sentences: [
-        "Next, let's analyse the industry using Porter's Five Forces.",
-        "The threat of new entrants is moderate, as the industry requires high investment, but large tech companies are still entering.",
-        "Supplier power is low, because BYD produces many components in-house.",
-        "Buyer power is moderate, as customers have more choices.",
-        "The threat of substitutes is also moderate, including public transport and hybrid vehicles.",
-        "Finally, competition is very high, with strong rivals like Tesla and Toyota."
-      ]},
-      { title: "Page 6 · STP Strategy", sentences: [
-        "Moving on to STP strategy.",
-        "BYD targets different customer groups, such as families, young professionals, and eco-conscious consumers.",
-        "In terms of positioning, BYD offers \"affordable premium\" EVs, meaning good technology at a reasonable price.",
-        "This allows BYD to compete with both budget and premium brands."
-      ]},
-      { title: "Page 7 · Competitor Comparison", sentences: [
-        "Next, let's compare BYD with its competitors.",
-        "Compared to Tesla, BYD covers a wider price range and targets more segments.",
-        "Tesla focuses more on the premium market, while Toyota focuses on hybrid vehicles and reliability.",
-        "So BYD reaches more customers, but it may also face challenges in maintaining a clear brand identity."
-      ]},
-      { title: "Page 8 · Challenges", sentences: [
-        "Now let's look at the challenges.",
-        "First, brand recognition is still low in Western markets, so more marketing is needed.",
-        "There are also geopolitical risks and trade barriers affecting expansion.",
-        "Some consumers may still have concerns about quality.",
-        "So BYD needs to address these issues to strengthen its global position."
-      ]},
-      { title: "Page 9 · Key Success Factors", sentences: [
-        "Finally, let's look at the key success factors.",
-        "First is vertical integration, which reduces cost and improves efficiency.",
-        "Second is cost leadership, allowing competitive pricing.",
-        "Third is technological innovation, especially in batteries.",
-        "And lastly, strong digital marketing, such as social media and partnerships, helps increase brand awareness."
-      ]},
-      { title: "Page 10 · Conclusion", sentences: [
-        "To conclude, BYD has shown strong growth in the global EV market.",
-        "Its strategy combines cost advantage, technology, and market coverage.",
-        "However, it still faces challenges such as brand perception and global expansion risks.",
-        "Overall, if BYD continues to adapt, it has strong potential for future growth.",
-        "Thank you."
-      ]}
-    ]
-  }
+// ==================== Phonetic Dictionary ====================
+const P = {
+"a":"ə","about":"əˈbaʊt","accused":"əˈkjuːzd","actions":"ˈækʃənz","adapt":"əˈdæpt",
+"address":"əˈdrɛs","adjust":"əˈdʒʌst","adjusting":"əˈdʒʌstɪŋ","advantage":"ədˈvæntɪdʒ",
+"affecting":"əˈfɛktɪŋ","affordable":"əˈfɔːrdəbəl","afternoon":"ˌæftərˈnuːn",
+"all":"ɔːl","allow":"əˈlaʊ","allowing":"əˈlaʊɪŋ","allows":"əˈlaʊz","also":"ˈɔːlsoʊ",
+"alternative":"ɔːlˈtɜːrnətɪv","analyse":"ˈænəlaɪz","analysis":"əˈnæləsɪs","and":"ænd",
+"antitrust":"ˌæntɪˈtrʌst","apis":"ˈeɪpiːaɪz","app":"æp","apple":"ˈæpəl","are":"ɑːr",
+"areas":"ˈɛriəz","around":"əˈraʊnd","as":"æz","at":"æt","attract":"əˈtrækt",
+"awareness":"əˈwɛrnəs",
+"barriers":"ˈbæriərz","batteries":"ˈbætəriz","battery":"ˈbætəri","because":"bɪˈkɔːz",
+"become":"bɪˈkʌm","being":"ˈbiːɪŋ","better":"ˈbɛtər","billion":"ˈbɪljən",
+"both":"boʊθ","brand":"brænd","brands":"brændz","breaking":"ˈbreɪkɪŋ",
+"brief":"briːf","budget":"ˈbʌdʒɪt","build":"bɪld","business":"ˈbɪznɪs",
+"but":"bʌt","buyer":"ˈbaɪər","by":"baɪ","byd":"biːwaɪˈdiː",
+"can":"kæn","challenges":"ˈtʃælɪndʒɪz","charges":"ˈtʃɑːrdʒɪz","chips":"tʃɪps",
+"choices":"ˈtʃɔɪsɪz","clear":"klɪr","combines":"kəmˈbaɪnz","commission":"kəˈmɪʃən",
+"companies":"ˈkʌmpəniz","company":"ˈkʌmpəni","companion":"kəmˈpænjən",
+"compared":"kəmˈpɛrd","comparison":"kəmˈpærɪsən","compete":"kəmˈpiːt",
+"competition":"ˌkɑːmpəˈtɪʃən","competitive":"kəmˈpɛtɪtɪv",
+"competitiveness":"kəmˈpɛtɪtɪvnəs","competitor":"kəmˈpɛtɪtər",
+"competitors":"kəmˈpɛtɪtərz","compliant":"kəmˈplaɪənt",
+"components":"kəmˈpoʊnənts","concerns":"kənˈsɜːrnz","conclude":"kənˈkluːd",
+"conclusion":"kənˈkluːʒən","continues":"kənˈtɪnjuːz","control":"kənˈtroʊl",
+"controlled":"kənˈtroʊld","controls":"kənˈtroʊlz","costly":"ˈkɔːstli",
+"costs":"kɔːsts","cost":"kɔːst","countries":"ˈkʌntriz","coverage":"ˈkʌvərɪdʒ",
+"covers":"ˈkʌvərz","creates":"kriˈeɪts","cross":"krɔːs","cross-platform":"krɔːs ˈplætfɔːrm",
+"customer":"ˈkʌstəmər","customers":"ˈkʌstəmərz",
+"data":"ˈdeɪtə","deeper":"ˈdiːpər","define":"dɪˈfaɪn","demand":"dɪˈmænd",
+"dependent":"dɪˈpɛndənt","development":"dɪˈvɛləpmənt","developers":"dɪˈvɛləpərz",
+"devices":"dɪˈvaɪsɪz","different":"ˈdɪfrənt","digital":"ˈdɪdʒɪtəl",
+"directions":"dɪˈrɛkʃənz","discuss":"dɪˈskʌs","distribution":"ˌdɪstrɪˈbjuːʃən",
+"do":"duː","doable":"ˈduːəbəl","doesn't":"ˈdʌzənt","dreams":"driːmz",
+"driving":"ˈdraɪvɪŋ","drops":"drɑːps",
+"easy":"ˈiːzi","eco-conscious":"ˌiːkoʊ ˈkɑːnʃəs","economically":"ˌiːkəˈnɑːmɪkli",
+"ecosystem":"ˈiːkoʊˌsɪstəm","efficiency":"ɪˈfɪʃənsi","electric":"ɪˈlɛktrɪk",
+"enabling":"ɪˈneɪblɪŋ","encourage":"ɪnˈkɜːrɪdʒ","entering":"ˈɛntərɪŋ",
+"entrants":"ˈɛntrənts","environment":"ɪnˈvaɪrənmənt","environmental":"ɪnˌvaɪrənˈmɛntəl",
+"especially":"ɪˈspɛʃəli","europe":"ˈjʊrəp","ev":"iːˈviː","even":"ˈiːvən",
+"everyone":"ˈɛvriˌwʌn","evs":"iːˈviːz","expansion":"ɪkˈspænʃən",
+"expanding":"ɪkˈspændɪŋ","experienced":"ɪkˈspɪriənst","external":"ɪkˈstɜːrnəl",
+"face":"feɪs","faces":"ˈfeɪsɪz","facing":"ˈfeɪsɪŋ","factors":"ˈfæktərz",
+"families":"ˈfæməliz","fee":"fiː","fees":"fiːz","finally":"ˈfaɪnəli",
+"find":"faɪnd","first":"fɜːrst","five":"faɪv","focus":"ˈfoʊkəs",
+"focusing":"ˈfoʊkəsɪŋ","follow":"ˈfɑːloʊ","followed":"ˈfɑːloʊd",
+"for":"fɔːr","forces":"ˈfɔːrsɪz","from":"frʌm","future":"ˈfjuːtʃər",
+"gain":"ɡeɪn","give":"ɡɪv","global":"ˈɡloʊbəl","go":"ɡoʊ","going":"ˈɡoʊɪŋ",
+"good":"ɡʊd","google":"ˈɡuːɡəl","government":"ˈɡʌvərnmənt",
+"growing":"ˈɡroʊɪŋ","growth":"ɡroʊθ","groups":"ɡruːps",
+"has":"hæz","have":"hæv","helps":"hɛlps","here":"hɪr","high":"haɪ",
+"highlights":"ˈhaɪlaɪts","how":"haʊ","however":"haʊˈɛvər","hybrid":"ˈhaɪbrɪd",
+"i'm":"aɪm","idea":"aɪˈdiːə","identity":"aɪˈdɛntɪti",
+"if":"ɪf","imessage":"aɪˈmɛsɪdʒ","impact":"ˈɪmpækt","impactful":"ɪmˈpæktfəl",
+"implement":"ˈɪmpləmɛnt","important":"ɪmˈpɔːrtənt","improves":"ɪmˈpruːvz",
+"improving":"ɪmˈpruːvɪŋ","in":"ɪn","in-house":"ˌɪnˈhaʊs","include":"ɪnˈkluːd",
+"increase":"ɪnˈkriːs","increased":"ɪnˈkriːst","increasing":"ɪnˈkriːsɪŋ",
+"industry":"ˈɪndəstri","innovation":"ˌɪnəˈveɪʃən","integrated":"ˈɪntɪɡreɪtɪd",
+"integration":"ˌɪntɪˈɡreɪʃən","into":"ˈɪntuː","introduce":"ˌɪntrəˈdjuːs",
+"introduction":"ˌɪntrəˈdʌkʃən","investigating":"ɪnˈvɛstɪɡeɪtɪŋ",
+"investment":"ɪnˈvɛstmənt","is":"ɪz","issues":"ˈɪʃuːz","it":"ɪt","it's":"ɪts",
+"its":"ɪts",
+"keep":"kiːp","key":"kiː",
+"large":"lɑːrdʒ","largest":"ˈlɑːrdʒɪst","lastly":"ˈlæstli",
+"leadership":"ˈliːdərʃɪp","legal":"ˈliːɡəl","let's":"lɛts",
+"levels":"ˈlɛvəlz","like":"laɪk","limited":"ˈlɪmɪtɪd","limits":"ˈlɪmɪts",
+"lock-in":"ˈlɑːk ɪn","look":"lʊk","lot":"lɑːt","low":"loʊ","lower":"ˈloʊər",
+"mainly":"ˈmeɪnli","main":"meɪn","maintaining":"meɪnˈteɪnɪŋ","make":"meɪk",
+"makes":"meɪks","many":"ˈmɛni","market":"ˈmɑːrkɪt","marketing":"ˈmɑːrkɪtɪŋ",
+"markets":"ˈmɑːrkɪts","matrix":"ˈmeɪtrɪks","may":"meɪ","meaning":"ˈmiːnɪŋ",
+"media":"ˈmiːdiə","messaging":"ˈmɛsɪdʒɪŋ","million":"ˈmɪljən",
+"model":"ˈmɑːdəl","moderate":"ˈmɑːdərət","monitoring":"ˈmɑːnɪtərɪŋ",
+"monopoly":"məˈnɑːpəli","more":"mɔːr","most":"moʊst","move":"muːv",
+"moving":"ˈmuːvɪŋ",
+"name":"neɪm","needed":"ˈniːdɪd","needs":"niːdz","new":"njuː","next":"nɛkst",
+"nfc":"ɛn ɛf siː","no":"noʊ","not":"nɑːt","now":"naʊ",
+"of":"ʌv","offers":"ˈɔːfərz","oil":"ɔɪl","on":"ɑːn","one":"wʌn",
+"ones":"wʌnz","open":"ˈoʊpən","opening":"ˈoʊpənɪŋ","opportunities":"ˌɑːpərˈtuːnɪtiz",
+"options":"ˈɑːpʃənz","or":"ɔːr","other":"ˈʌðər","our":"aʊər",
+"overall":"ˌoʊvərˈɔːl","over":"ˈoʊvər","overseas":"ˌoʊvərˈsiːz","own":"oʊn",
+"partnerships":"ˈpɑːrtnərʃɪps","party":"ˈpɑːrti","past":"pæst","pay":"peɪ",
+"payment":"ˈpeɪmənt","payments":"ˈpeɪmənts","people":"ˈpiːpəl",
+"perception":"pərˈsɛpʃən","performance":"pərˈfɔːrməns",
+"perspective":"pərˈspɛktɪv","perspectives":"pərˈspɛktɪvz",
+"pestle":"ˈpɛsəl","platform":"ˈplætfɔːrm","platforms":"ˈplætfɔːrmz",
+"point":"pɔɪnt","policies":"ˈpɑːləsiz","political":"pəˈlɪtɪkəl",
+"portability":"ˌpɔːrtəˈbɪləti","porter's":"ˈpɔːrtərz","position":"pəˈzɪʃən",
+"positioning":"pəˈzɪʃənɪŋ","potential":"pəˈtɛnʃəl","power":"ˈpaʊər",
+"premium":"ˈpriːmiəm","present":"prɪˈzɛnt","presentation":"ˌprɛzənˈteɪʃən",
+"pressure":"ˈprɛʃər","price":"praɪs","prices":"ˈpraɪsɪz","pricing":"ˈpraɪsɪŋ",
+"problem":"ˈprɑːbləm","problems":"ˈprɑːbləmz","process":"ˈprɑːsɛs",
+"producers":"prəˈduːsərz","produces":"prəˈduːsɪz","professionals":"prəˈfɛʃənəlz",
+"protecting":"prəˈtɛktɪŋ","public":"ˈpʌblɪk",
+"quality":"ˈkwɑːləti","question":"ˈkwɛstʃən","quick":"kwɪk",
+"quickly":"ˈkwɪkli","quite":"kwaɪt",
+"range":"reɪndʒ","reaching":"ˈriːtʃɪŋ","reaches":"ˈriːtʃɪz",
+"reasonable":"ˈriːzənəbəl","recognition":"ˌrɛkəɡˈnɪʃən","reduce":"rɪˈdjuːs",
+"reduces":"rɪˈdjuːsɪz","reducing":"rɪˈdjuːsɪŋ","regions":"ˈriːdʒənz",
+"regulations":"ˌrɛɡjəˈleɪʃənz","reliability":"rɪˌlaɪəˈbɪləti",
+"requirements":"rɪˈkwaɪərmənts","requires":"rɪˈkwaɪərz",
+"restricted":"rɪˈstrɪktɪd","revenue":"ˈrɛvənjuː","right":"raɪt",
+"rising":"ˈraɪzɪŋ","risk":"rɪsk","risks":"rɪsks","rivals":"ˈraɪvəlz",
+"safely":"ˈseɪfli","sales":"seɪlz","same":"seɪm","samsung":"ˈsæmsʌŋ",
+"second":"ˈsɛkənd","secure":"sɪˈkjʊr","security":"sɪˈkjʊrɪti","see":"siː",
+"segments":"ˈsɛɡmənts","serious":"ˈsɪriəs","service":"ˈsɜːrvɪs",
+"shift":"ʃɪft","show":"ʃoʊ","shown":"ʃoʊn","shows":"ʃoʊz",
+"sideloading":"ˈsaɪdˌloʊdɪŋ","significantly":"sɪɡˈnɪfɪkəntli",
+"situation":"ˌsɪtʃuˈeɪʃən","so":"soʊ","social":"ˈsoʊʃəl",
+"socially":"ˈsoʊʃəli","sold":"soʊld","solution":"səˈluːʃən",
+"solutions":"səˈluːʃənz","some":"sʌm","spending":"ˈspɛndɪŋ",
+"stands":"stændz","start":"stɑːrt","stay":"steɪ","still":"stɪl",
+"store":"stɔːr","stores":"stɔːrz","strategy":"ˈstrætədʒi",
+"strengthen":"ˈstrɛŋθən","strong":"strɔːŋ","structured":"ˈstrʌktʃərd",
+"stp":"ɛs tiː piː","subsidies":"ˈsʌbsɪdiz","substitutes":"ˈsʌbstɪtjuːts",
+"success":"səkˈsɛs","suggest":"səˈdʒɛst","supplier":"səˈplaɪər",
+"support":"səˈpɔːrt","switch":"swɪtʃ","switching":"ˈswɪtʃɪŋ",
+"take":"teɪk","talk":"tɔːk","targets":"ˈtɑːrɡɪts","tech":"tɛk",
+"technological":"ˌtɛknəˈlɑːdʒɪkəl","technology":"tɛkˈnɑːlədʒi",
+"tensions":"ˈtɛnʃənz","terms":"tɜːrmz","tesla":"ˈtɛslə",
+"test":"tɛst","thank":"θæŋk","that":"ðæt","the":"ðə","then":"ðɛn",
+"there":"ðɛr","these":"ðiːz","things":"θɪŋz","third":"θɜːrd",
+"third-party":"θɜːrd ˈpɑːrti","this":"ðɪs","threat":"θrɛt",
+"three":"θriː","tiered":"tɪrd","time":"taɪm","to":"tuː","today":"təˈdeɪ",
+"total":"ˈtoʊtəl","towards":"tɔːrdz","toyota":"toʊˈjoʊtə","trade":"treɪd",
+"transactions":"trænˈzækʃənz","transport":"ˈtrænspɔːrt","two":"tuː",
+"understand":"ˌʌndərˈstænd","use":"juːs","user":"ˈjuːzər","users":"ˈjuːzərz",
+"using":"ˈjuːzɪŋ",
+"valuable":"ˈvæljuəbəl","vehicle":"ˈviːɪkəl","vehicles":"ˈviːɪkəlz",
+"verification":"ˌvɛrɪfɪˈkeɪʃən","vertical":"ˈvɜːrtɪkəl",
+"vertically":"ˈvɜːrtɪkli","very":"ˈvɛri","volume":"ˈvɑːljuːm",
+"way":"weɪ","we":"wiː","we'll":"wiːl","we're":"wɪr","western":"ˈwɛstərn",
+"what":"wʌt","which":"wɪtʃ","while":"waɪl","why":"waɪ","wider":"ˈwaɪdər",
+"will":"wɪl","wins":"wɪnz","with":"wɪð","work":"wɜːrk","workplan":"ˈwɜːrkplæn",
+"world":"wɜːrld",
+"years":"jɪrz","you":"juː","young":"jʌŋ","your":"jɔːr",
+"accelerating":"ækˈsɛləreɪtɪŋ","30%":"ˈθɜːrti pərˈsɛnt",
+"1.5":"wʌn pɔɪnt faɪv","4.6":"fɔːr pɔɪnt sɪks","2025":"ˌtwɛnti ˌtwɛnti ˈfaɪv",
+"2×2":"tuː baɪ tuː"
 };
 
+// ==================== Course Data ====================
+const courses = {
+"7027": { name: "7027 · Apple Antitrust", pages: [
+  { title: "Page 1 · Opening", sentences: [
+    {en:"Good afternoon everyone,", zh:"大家下午好，"},
+    {en:"I'm [name].", zh:"我是[名字]。"},
+    {en:"Today we're going to talk about Apple.", zh:"今天我们要讨论苹果公司。"},
+    {en:"We'll use a structured way to look at its antitrust challenges and then suggest some solutions.", zh:"我们将用结构化的方式来审视其反垄断挑战，然后提出一些解决方案。"}
+  ]},
+  { title: "Page 2 · Introduction", sentences: [
+    {en:"So first, a quick introduction to Apple.", zh:"首先，简单介绍一下苹果公司。"},
+    {en:"It's one of the most valuable tech companies, with over 1.5 billion devices in use.", zh:"它是最有价值的科技公司之一，有超过15亿台设备在使用中。"},
+    {en:"But right now, it's facing quite serious antitrust issues in the US, Europe, and other regions.", zh:"但目前，它在美国、欧洲和其他地区面临着相当严重的反垄断问题。"},
+    {en:"The main problems are: the 30% App Store commission, limits on third-party payments, iMessage not being cross-platform, and high switching costs.", zh:"主要问题包括：30%的App Store佣金、对第三方支付的限制、iMessage不跨平台以及高转换成本。"},
+    {en:"So to address this, we suggest three main actions: open app distribution, adjust the commission model, and allow more payment options.", zh:"为了解决这个问题，我们建议三个主要行动：开放应用分发、调整佣金模式、允许更多支付选项。"}
+  ]},
+  { title: "Page 3 · Problem Definition", sentences: [
+    {en:"Now let's define the problem.", zh:"现在让我们来定义这个问题。"},
+    {en:"Apple has a very strong ecosystem and makes a lot of service revenue.", zh:"苹果拥有非常强大的生态系统，并获得了大量的服务收入。"},
+    {en:"But at the same time, many countries are investigating it.", zh:"但与此同时，许多国家正在对其进行调查。"},
+    {en:"The key issues are high fees, no alternative app stores, restricted payments, and user lock-in.", zh:"关键问题是高额费用、没有替代应用商店、受限的支付方式和用户锁定。"},
+    {en:"So the challenge here is: how can Apple follow regulations, but still keep its revenue and security?", zh:"所以这里的挑战是：苹果如何在遵守法规的同时，仍然保持其收入和安全性？"}
+  ]},
+  { title: "Page 4 · Monopoly Accusation", sentences: [
+    {en:"So why is Apple being accused of monopoly?", zh:"那么为什么苹果被指控垄断？"},
+    {en:"Mainly two reasons.", zh:"主要有两个原因。"},
+    {en:"First, market power. Apple controls the App Store, charges 30%, and doesn't allow other app stores.", zh:"第一，市场支配力。苹果控制着App Store，收取30%佣金，不允许其他应用商店。"},
+    {en:"Second, ecosystem lock-in. iMessage doesn't work across platforms, NFC is limited to Apple Pay, and switching is costly.", zh:"第二，生态系统锁定。iMessage不跨平台，NFC仅限于Apple Pay，转换成本高。"},
+    {en:"So both users and developers become very dependent on Apple.", zh:"所以用户和开发者都非常依赖苹果。"}
+  ]},
+  { title: "Page 5 · Solutions Overview", sentences: [
+    {en:"Now let's look at the solutions.", zh:"现在让我们来看看解决方案。"},
+    {en:"There are two main directions: breaking the distribution monopoly and reducing lock-in.", zh:"有两个主要方向：打破分发垄断和减少锁定。"},
+    {en:"So we suggest things like: tiered fees, opening app distribution, allowing more payment options, improving messaging, opening NFC, and enabling data portability.", zh:"我们建议的措施包括：分级收费、开放应用分发、允许更多支付选项、改善消息互通、开放NFC以及实现数据可移植性。"},
+    {en:"Overall, the idea is to make the ecosystem more open, but still keep control.", zh:"总的来说，目标是让生态系统更加开放，但仍然保持控制。"}
+  ]},
+  { title: "Page 6 · Prioritisation", sentences: [
+    {en:"Here we prioritise the solutions using a 2×2 matrix.", zh:"在这里我们使用2×2矩阵对解决方案进行优先排序。"},
+    {en:"The most important ones are the \"Do First\" actions: high impact and easy to implement.", zh:"最重要的是「优先执行」的行动：高影响力且易于实施。"},
+    {en:"These include opening app distribution, adjusting fees, and allowing external payments.", zh:"包括开放应用分发、调整费用和允许外部支付。"},
+    {en:"Quick wins include cross-platform messaging.", zh:"快速成效包括跨平台消息互通。"},
+    {en:"Some actions, like data portability, are important but take more time.", zh:"一些行动，如数据可移植性，很重要但需要更多时间。"},
+    {en:"So we focus on what is both impactful and doable first.", zh:"所以我们首先关注既有影响力又可行的事项。"}
+  ]},
+  { title: "Page 7 · Workplan", sentences: [
+    {en:"This is our workplan, focusing on three areas.", zh:"这是我们的工作计划，聚焦三个领域。"},
+    {en:"First, app distribution. How can Apple allow sideloading but still stay secure?", zh:"第一，应用分发。苹果如何允许侧载但仍保持安全？"},
+    {en:"We suggest allowing it with a verification process.", zh:"我们建议通过验证流程来允许侧载。"},
+    {en:"Second, commission fees. How can Apple reduce fees but still keep revenue?", zh:"第二，佣金费用。苹果如何降低费用但仍保持收入？"},
+    {en:"We suggest tiered fees and external payments.", zh:"我们建议分级收费和外部支付。"},
+    {en:"Third, payment access. How can Apple open NFC safely?", zh:"第三，支付接入。苹果如何安全地开放NFC？"},
+    {en:"We suggest controlled APIs and monitoring transactions.", zh:"我们建议使用受控的API和监控交易。"}
+  ]},
+  { title: "Page 8 · Deep Dive: Tiered Fees", sentences: [
+    {en:"Here we go deeper into one solution: tiered fees.", zh:"在这里我们深入探讨一个解决方案：分级收费。"},
+    {en:"The key question is how to lower fees but still keep revenue.", zh:"关键问题是如何降低费用但仍保持收入。"},
+    {en:"We compare competitors like Google and Samsung, and test different fee levels.", zh:"我们比较了Google和三星等竞争对手，并测试了不同的费用水平。"},
+    {en:"What we find is that lower fees can attract more developers and increase spending.", zh:"我们发现较低的费用可以吸引更多开发者并增加消费。"},
+    {en:"So even if commission drops, Apple can gain volume and reduce legal risk.", zh:"所以即使佣金下降，苹果也可以获得更多交易量并降低法律风险。"}
+  ]},
+  { title: "Page 9 · Conclusion", sentences: [
+    {en:"Finally, our conclusion.", zh:"最后，我们的结论。"},
+    {en:"First, the situation: Apple has a strong ecosystem and high revenue.", zh:"第一，现状：苹果拥有强大的生态系统和高收入。"},
+    {en:"Second, the problem: it faces global antitrust pressure.", zh:"第二，问题：它面临全球反垄断压力。"},
+    {en:"And third, the solution: open app distribution, introduce tiered fees and external payments, and open NFC.", zh:"第三，解决方案：开放应用分发、引入分级收费和外部支付、开放NFC。"},
+    {en:"These help Apple stay compliant while still protecting its business.", zh:"这些帮助苹果在保护其业务的同时保持合规。"}
+  ]}
+]},
+"7032": { name: "7032 · BYD Marketing", pages: [
+  { title: "Page 1 · Opening", sentences: [
+    {en:"Good afternoon everyone.", zh:"大家下午好。"},
+    {en:"Today we are going to present BYD and its marketing strategy in the digital world.", zh:"今天我们将介绍比亚迪及其在数字世界中的营销策略。"},
+    {en:"In this presentation, we will first give a brief overview of the company,", zh:"在本次演讲中，我们将首先简要介绍公司概况，"},
+    {en:"then analyse the external environment using PESTLE and Porter's Five Forces,", zh:"然后使用PESTLE和波特五力模型分析外部环境，"},
+    {en:"followed by its STP strategy and competitor comparison,", zh:"接着是其STP策略和竞争对手比较，"},
+    {en:"and finally we will discuss the challenges and key success factors.", zh:"最后我们将讨论挑战和关键成功因素。"}
+  ]},
+  { title: "Page 2 · Company Overview", sentences: [
+    {en:"So first, let's start with a quick overview of BYD.", zh:"首先，让我们从比亚迪的简要概述开始。"},
+    {en:"BYD, which stands for \"Build Your Dreams\", is one of the largest electric vehicle producers in the world, with around 4.6 million vehicles sold in 2025.", zh:"比亚迪（Build Your Dreams）是全球最大的电动汽车制造商之一，2025年销售了约460万辆汽车。"},
+    {en:"One key advantage of BYD is that it is vertically integrated, meaning it produces its own batteries, chips, and key components.", zh:"比亚迪的一个关键优势是它是垂直整合的，即自主生产电池、芯片和关键零部件。"},
+    {en:"In terms of the market environment, global factors like rising oil prices and geopolitical tensions are accelerating the shift towards electric vehicles.", zh:"在市场环境方面，油价上涨和地缘政治紧张等全球因素正在加速向电动汽车的转变。"},
+    {en:"So in this presentation, we will analyse BYD from different perspectives to better understand its strategy and performance.", zh:"因此在本次演讲中，我们将从不同角度分析比亚迪，以更好地了解其策略和表现。"}
+  ]},
+  { title: "Page 3 · Global Sales", sentences: [
+    {en:"Next, let's look at BYD's global sales performance.", zh:"接下来，让我们看看比亚迪的全球销售表现。"},
+    {en:"As we can see, BYD has experienced strong growth over the past three years.", zh:"正如我们所见，比亚迪在过去三年经历了强劲增长。"},
+    {en:"Its total sales increased significantly, reaching around 4.6 million vehicles in 2025.", zh:"其总销量显著增长，在2025年达到约460万辆。"},
+    {en:"This shows that the company is expanding very quickly, especially in overseas markets.", zh:"这表明该公司正在非常快速地扩张，尤其是在海外市场。"},
+    {en:"Overall, this highlights BYD's increasing competitiveness in the global EV market.", zh:"总体而言，这凸显了比亚迪在全球电动汽车市场中日益增强的竞争力。"}
+  ]},
+  { title: "Page 4 · PESTLE Analysis", sentences: [
+    {en:"So now, let's move on to the PESTLE analysis.", zh:"现在，让我们进入PESTLE分析。"},
+    {en:"From a political perspective, government policies and subsidies support the EV industry.", zh:"从政治角度看，政府政策和补贴支持电动汽车行业。"},
+    {en:"Economically, rising oil prices encourage people to switch to electric vehicles.", zh:"在经济方面，油价上涨鼓励人们转向电动汽车。"},
+    {en:"Socially, growing environmental awareness is also driving demand.", zh:"在社会方面，日益增长的环保意识也在推动需求。"},
+    {en:"In terms of technology, BYD has strong innovation, especially in battery development.", zh:"在技术方面，比亚迪有很强的创新能力，尤其是电池开发。"},
+    {en:"However, there are also legal and environmental challenges, such as regulations and sustainability requirements.", zh:"然而，也存在法律和环境方面的挑战，如法规和可持续性要求。"},
+    {en:"So overall, the environment creates both opportunities and challenges.", zh:"总体而言，环境既创造了机遇也带来了挑战。"}
+  ]},
+  { title: "Page 5 · Porter's Five Forces", sentences: [
+    {en:"Next, let's analyse the industry using Porter's Five Forces.", zh:"接下来，让我们用波特五力模型分析该行业。"},
+    {en:"The threat of new entrants is moderate, as the industry requires high investment, but large tech companies are still entering.", zh:"新进入者的威胁是中等的，因为该行业需要高投资，但大型科技公司仍在进入。"},
+    {en:"Supplier power is low, because BYD produces many components in-house.", zh:"供应商议价能力较低，因为比亚迪自主生产许多零部件。"},
+    {en:"Buyer power is moderate, as customers have more choices.", zh:"买方议价能力是中等的，因为客户有更多选择。"},
+    {en:"The threat of substitutes is also moderate, including public transport and hybrid vehicles.", zh:"替代品的威胁也是中等的，包括公共交通和混合动力汽车。"},
+    {en:"Finally, competition is very high, with strong rivals like Tesla and Toyota.", zh:"最后，竞争非常激烈，有特斯拉和丰田等强大的竞争对手。"}
+  ]},
+  { title: "Page 6 · STP Strategy", sentences: [
+    {en:"Moving on to STP strategy.", zh:"接下来是STP策略。"},
+    {en:"BYD targets different customer groups, such as families, young professionals, and eco-conscious consumers.", zh:"比亚迪针对不同的客户群体，如家庭、年轻专业人士和环保意识强的消费者。"},
+    {en:"In terms of positioning, BYD offers \"affordable premium\" EVs, meaning good technology at a reasonable price.", zh:"在定位方面，比亚迪提供「平价高端」电动汽车，即以合理价格提供优质技术。"},
+    {en:"This allows BYD to compete with both budget and premium brands.", zh:"这使比亚迪能够与经济型和高端品牌竞争。"}
+  ]},
+  { title: "Page 7 · Competitor Comparison", sentences: [
+    {en:"Next, let's compare BYD with its competitors.", zh:"接下来，让我们将比亚迪与其竞争对手进行比较。"},
+    {en:"Compared to Tesla, BYD covers a wider price range and targets more segments.", zh:"与特斯拉相比，比亚迪覆盖更广的价格范围并针对更多细分市场。"},
+    {en:"Tesla focuses more on the premium market, while Toyota focuses on hybrid vehicles and reliability.", zh:"特斯拉更专注于高端市场，而丰田专注于混合动力汽车和可靠性。"},
+    {en:"So BYD reaches more customers, but it may also face challenges in maintaining a clear brand identity.", zh:"所以比亚迪触达更多客户，但也可能面临维持清晰品牌形象的挑战。"}
+  ]},
+  { title: "Page 8 · Challenges", sentences: [
+    {en:"Now let's look at the challenges.", zh:"现在让我们看看面临的挑战。"},
+    {en:"First, brand recognition is still low in Western markets, so more marketing is needed.", zh:"第一，品牌认知度在西方市场仍然较低，所以需要更多营销。"},
+    {en:"There are also geopolitical risks and trade barriers affecting expansion.", zh:"还有地缘政治风险和贸易壁垒影响扩张。"},
+    {en:"Some consumers may still have concerns about quality.", zh:"一些消费者可能仍然对质量有所顾虑。"},
+    {en:"So BYD needs to address these issues to strengthen its global position.", zh:"所以比亚迪需要解决这些问题以加强其全球地位。"}
+  ]},
+  { title: "Page 9 · Key Success Factors", sentences: [
+    {en:"Finally, let's look at the key success factors.", zh:"最后，让我们看看关键成功因素。"},
+    {en:"First is vertical integration, which reduces cost and improves efficiency.", zh:"第一是垂直整合，降低成本并提高效率。"},
+    {en:"Second is cost leadership, allowing competitive pricing.", zh:"第二是成本领先，实现有竞争力的定价。"},
+    {en:"Third is technological innovation, especially in batteries.", zh:"第三是技术创新，尤其是电池方面。"},
+    {en:"And lastly, strong digital marketing, such as social media and partnerships, helps increase brand awareness.", zh:"最后，强大的数字营销，如社交媒体和合作伙伴关系，有助于提高品牌知名度。"}
+  ]},
+  { title: "Page 10 · Conclusion", sentences: [
+    {en:"To conclude, BYD has shown strong growth in the global EV market.", zh:"总结一下，比亚迪在全球电动汽车市场表现出了强劲增长。"},
+    {en:"Its strategy combines cost advantage, technology, and market coverage.", zh:"其策略结合了成本优势、技术和市场覆盖。"},
+    {en:"However, it still faces challenges such as brand perception and global expansion risks.", zh:"然而，它仍然面临品牌认知和全球扩张风险等挑战。"},
+    {en:"Overall, if BYD continues to adapt, it has strong potential for future growth.", zh:"总体而言，如果比亚迪继续适应，它具有强劲的未来增长潜力。"},
+    {en:"Thank you.", zh:"谢谢大家。"}
+  ]}
+]}
+};
+
+// ==================== State ====================
 let currentCourse = localStorage.getItem('speech-course') || '7032';
 if (!courses[currentCourse]) currentCourse = Object.keys(courses)[0];
 let pages = courses[currentCourse].pages;
-let currentPage = 0;
-let currentSentence = 0;
-let mode = 'sentence';
-let speechRate = 0.92;
-let isPlayingAll = false;
-let completedSentences = new Set();
-let completedPages = new Set();
+let currentPage = 0, currentSentence = 0, mode = 'sentence', speechRate = 0.92;
+let isPlayingAll = false, showIpa = localStorage.getItem('show-ipa') !== 'false';
+let completedSentences = new Set(), completedPages = new Set();
 
-// --- Course selector ---
+// ==================== IPA Toggle ====================
+const ipaBtn = document.getElementById('ipaToggle');
+function syncIpa() {
+  document.getElementById('content').classList.toggle('hide-ipa', !showIpa);
+  ipaBtn.classList.toggle('off', !showIpa);
+  ipaBtn.textContent = showIpa ? '音标' : '音标';
+}
+syncIpa();
+ipaBtn.addEventListener('click', () => {
+  showIpa = !showIpa;
+  localStorage.setItem('show-ipa', showIpa);
+  syncIpa();
+});
+
+// ==================== Course Selector ====================
 const courseSel = document.getElementById('courseSelect');
 courseSel.innerHTML = Object.entries(courses).map(([id, c]) =>
   `<option value="${id}" ${id === currentCourse ? 'selected' : ''}>${c.name}</option>`
 ).join('');
-
 courseSel.addEventListener('change', e => {
   currentCourse = e.target.value;
   localStorage.setItem('speech-course', currentCourse);
   pages = courses[currentCourse].pages;
-  currentPage = 0;
-  currentSentence = 0;
-  completedSentences.clear();
-  completedPages.clear();
-  stopAll();
-  isPlayingAll = false;
-  updatePlayAllBtn();
+  currentPage = 0; currentSentence = 0;
+  completedSentences.clear(); completedPages.clear();
+  stopAll(); isPlayingAll = false; updatePlayAllBtn();
   fullRender();
 });
 
-// --- Voice engine ---
+// ==================== Voice Engine ====================
 const synth = window.speechSynthesis;
-let selectedVoice = null;
-let enVoices = [];
-
-const topVoices = ['Samantha', 'Karen', 'Daniel', 'Moira', 'Tessa', 'Google US English', 'Google UK English Female', 'Google UK English Male'];
+let selectedVoice = null, enVoices = [];
+const topVoices = ['Samantha','Karen','Daniel','Moira','Tessa','Google US English','Google UK English Female','Google UK English Male'];
 
 function stopAll() { synth.cancel(); }
 
 function populateVoices() {
   const all = synth.getVoices();
   if (!all.length) return;
-
   enVoices = all.filter(v => v.lang.startsWith('en'));
-  if (!enVoices.length) { enVoices = all; }
-
+  if (!enVoices.length) enVoices = all;
   enVoices.sort((a, b) => {
     const ai = topVoices.findIndex(n => a.name.includes(n));
     const bi = topVoices.findIndex(n => b.name.includes(n));
-    const aRank = ai >= 0 ? ai : 900;
-    const bRank = bi >= 0 ? bi : 900;
-    if (aRank !== bRank) return aRank - bRank;
-    return a.name.localeCompare(b.name);
+    return (ai >= 0 ? ai : 900) - (bi >= 0 ? bi : 900) || a.name.localeCompare(b.name);
   });
-
   const sel = document.getElementById('voiceSelect');
   const saved = localStorage.getItem('speech-voice');
-
   sel.innerHTML = enVoices.map((v, i) =>
     `<option value="${i}" ${v.name === saved ? 'selected' : ''}>${v.name} (${v.lang})</option>`
   ).join('');
-
-  if (saved) {
-    const found = enVoices.find(v => v.name === saved);
-    if (found) { selectedVoice = found; return; }
-  }
+  if (saved) { const f = enVoices.find(v => v.name === saved); if (f) { selectedVoice = f; return; } }
   selectedVoice = enVoices[0];
 }
-
 synth.onvoiceschanged = populateVoices;
-setTimeout(populateVoices, 100);
-setTimeout(populateVoices, 500);
-setTimeout(populateVoices, 1500);
+setTimeout(populateVoices, 100); setTimeout(populateVoices, 500); setTimeout(populateVoices, 1500);
 populateVoices();
 
 document.getElementById('voiceSelect').addEventListener('change', e => {
   selectedVoice = enVoices[parseInt(e.target.value)];
   localStorage.setItem('speech-voice', selectedVoice.name);
-  stopAll();
-  speak('Hello, this is my voice.', speechRate);
+  stopAll(); speak('Hello, this is my voice.', speechRate);
 });
 
 function speak(text, rate, onEnd) {
   stopAll();
   const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'en-US';
-  u.rate = rate || speechRate;
-  u.pitch = 1.0;
-  u.volume = 1;
+  u.lang = 'en-US'; u.rate = rate || speechRate; u.pitch = 1.0; u.volume = 1;
   if (selectedVoice) u.voice = selectedVoice;
   if (onEnd) u.onend = onEnd;
   u.onerror = () => { if (onEnd) onEnd(); };
-
-  let keepAlive;
   if (/Chrome/i.test(navigator.userAgent) && !/Edg/i.test(navigator.userAgent)) {
-    keepAlive = setInterval(() => {
-      if (synth.speaking && !synth.paused) { synth.pause(); synth.resume(); }
-      else clearInterval(keepAlive);
+    const ka = setInterval(() => {
+      if (synth.speaking && !synth.paused) { synth.pause(); synth.resume(); } else clearInterval(ka);
     }, 10000);
-    const origEnd = u.onend;
-    u.onend = (e) => { clearInterval(keepAlive); if (origEnd) origEnd(e); };
-    const origErr = u.onerror;
-    u.onerror = (e) => { clearInterval(keepAlive); if (origErr) origErr(e); };
+    const oe = u.onend; u.onend = e => { clearInterval(ka); if (oe) oe(e); };
+    const or = u.onerror; u.onerror = e => { clearInterval(ka); if (or) or(e); };
   }
-
   synth.speak(u);
 }
 
@@ -714,29 +646,36 @@ function speakWord(word) {
   const clean = word.replace(/[^a-zA-Z'-]/g, '');
   if (!clean) return;
   const u = new SpeechSynthesisUtterance(clean);
-  u.lang = 'en-US';
-  u.rate = 0.75;
-  u.pitch = 1.0;
-  u.volume = 1;
+  u.lang = 'en-US'; u.rate = 0.75; u.pitch = 1.0; u.volume = 1;
   if (selectedVoice) u.voice = selectedVoice;
   synth.speak(u);
+}
+
+// ==================== Rendering Helpers ====================
+function getIpa(word) {
+  const w = word.toLowerCase().replace(/[^a-z0-9'%.×-]/g, '');
+  return P[w] || '';
 }
 
 function makeClickableWords(text) {
   return text.split(/(\s+)/).map(part => {
     if (/^\s+$/.test(part)) return part;
-    return `<span class="word" data-word="${part.replace(/"/g, '&quot;')}">${part}</span>`;
+    const ipa = getIpa(part);
+    const ipaHtml = ipa ? `<span class="w-ipa">/${ipa}/</span>` : '<span class="w-ipa">&nbsp;</span>';
+    const clean = part.replace(/"/g, '&quot;');
+    return `<span class="word" data-word="${clean}">${ipaHtml}<span class="w-en">${part}</span></span>`;
   }).join('');
 }
 
-// --- Lightweight UI updates ---
+function getSentenceEn(s) { return typeof s === 'string' ? s : s.en; }
+function getSentenceZh(s) { return typeof s === 'object' ? s.zh : ''; }
 
+// ==================== UI Updates ====================
 function updateCardStates() {
   document.querySelectorAll('.sentence-card').forEach(card => {
     const idx = parseInt(card.dataset.idx);
-    const key = `${currentCourse}-${currentPage}-${idx}`;
     card.classList.toggle('active', idx === currentSentence);
-    card.classList.toggle('completed', completedSentences.has(key));
+    card.classList.toggle('completed', completedSentences.has(`${currentCourse}-${currentPage}-${idx}`));
   });
 }
 
@@ -763,11 +702,8 @@ function updateNavButtons() {
 }
 
 function updatePlayAllBtn() {
-  const btn = document.getElementById('playAllBtn');
-  btn.innerHTML = isPlayingAll ? '⏸ 暂停' : '▶ 播放全部';
+  document.getElementById('playAllBtn').innerHTML = isPlayingAll ? '⏸ 暂停' : '▶ 播放全部';
 }
-
-// --- Full rebuild ---
 
 function renderPageSelector() {
   document.getElementById('pageSelector').innerHTML = pages.map((_, i) =>
@@ -780,6 +716,7 @@ function renderSentenceView() {
   document.getElementById('sentenceView').innerHTML = `<div class="page-title">${page.title}</div>` +
     page.sentences.map((s, i) => {
       const key = `${currentCourse}-${currentPage}-${i}`;
+      const en = getSentenceEn(s), zh = getSentenceZh(s);
       return `<div class="sentence-card ${i === currentSentence ? 'active' : ''} ${completedSentences.has(key) ? 'completed' : ''}" data-idx="${i}">
         <div class="sentence-header">
           <span class="sentence-num">${i + 1} / ${page.sentences.length}</span>
@@ -787,28 +724,30 @@ function renderSentenceView() {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           </button>
         </div>
-        <div class="sentence-text">${makeClickableWords(s)}</div>
+        <div class="sentence-text">${makeClickableWords(en)}</div>
+        ${zh ? `<div class="sentence-zh">${zh}</div>` : ''}
       </div>`;
     }).join('');
 }
 
 function renderFullPageView() {
   const page = pages[currentPage];
-  const allText = page.sentences.join(' ');
+  const allEn = page.sentences.map(s => getSentenceEn(s)).join(' ');
+  const allZh = page.sentences.map(s => getSentenceZh(s)).filter(Boolean).join('');
   document.getElementById('fullPageView').innerHTML = `<div class="page-title">${page.title}</div>
     <button class="full-play-btn" id="fullPlayBtn">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
       播放整页
     </button>
     <div class="full-text-card">
-      <div class="sentence-text">${makeClickableWords(allText)}</div>
+      <div class="sentence-text">${makeClickableWords(allEn)}</div>
+      ${allZh ? `<div class="full-zh">${allZh}</div>` : ''}
     </div>`;
-
   document.getElementById('fullPlayBtn').addEventListener('click', () => {
     const btn = document.getElementById('fullPlayBtn');
     btn.classList.add('playing');
     btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> 播放中...`;
-    speak(allText, speechRate, () => {
+    speak(allEn, speechRate, () => {
       btn.classList.remove('playing');
       btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> 播放整页`;
       markPageCompleted();
@@ -827,161 +766,110 @@ function fullRender() {
     document.getElementById('fullPageView').classList.add('active');
     renderFullPageView();
   }
-  updateProgress();
-  updateNavButtons();
+  updateProgress(); updateNavButtons();
 }
 
-// --- Actions ---
-
-function markSentenceCompleted(pageIdx, sentIdx) {
-  completedSentences.add(`${currentCourse}-${pageIdx}-${sentIdx}`);
-  const allDone = pages[pageIdx].sentences.every((_, i) => completedSentences.has(`${currentCourse}-${pageIdx}-${i}`));
-  if (allDone) completedPages.add(`${currentCourse}-${pageIdx}`);
+// ==================== Actions ====================
+function markSentenceCompleted(pi, si) {
+  completedSentences.add(`${currentCourse}-${pi}-${si}`);
+  if (pages[pi].sentences.every((_, i) => completedSentences.has(`${currentCourse}-${pi}-${i}`)))
+    completedPages.add(`${currentCourse}-${pi}`);
 }
 
 function markPageCompleted() {
   pages[currentPage].sentences.forEach((_, i) => completedSentences.add(`${currentCourse}-${currentPage}-${i}`));
   completedPages.add(`${currentCourse}-${currentPage}`);
-  updateCardStates();
-  updatePageBtns();
-  updateProgress();
+  updateCardStates(); updatePageBtns(); updateProgress();
 }
 
 function playSentence(idx) {
-  stopAll();
-  isPlayingAll = false;
-  updatePlayAllBtn();
-  currentSentence = idx;
-  updateCardStates();
-
+  stopAll(); isPlayingAll = false; updatePlayAllBtn();
+  currentSentence = idx; updateCardStates();
   const card = document.querySelector(`.sentence-card[data-idx="${idx}"]`);
   const btn = card?.querySelector('.sentence-play');
   if (btn) btn.classList.add('playing');
   card?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-  speak(pages[currentPage].sentences[idx], speechRate, () => {
+  speak(getSentenceEn(pages[currentPage].sentences[idx]), speechRate, () => {
     if (btn) btn.classList.remove('playing');
     markSentenceCompleted(currentPage, idx);
-    updateCardStates();
-    updatePageBtns();
-    updateProgress();
+    updateCardStates(); updatePageBtns(); updateProgress();
   });
 }
 
 function playAll() {
-  if (isPlayingAll) {
-    stopAll();
-    isPlayingAll = false;
-    updatePlayAllBtn();
-    document.querySelectorAll('.sentence-play.playing').forEach(b => b.classList.remove('playing'));
-    return;
-  }
-
-  isPlayingAll = true;
-  updatePlayAllBtn();
-
+  if (isPlayingAll) { stopAll(); isPlayingAll = false; updatePlayAllBtn();
+    document.querySelectorAll('.sentence-play.playing').forEach(b => b.classList.remove('playing')); return; }
+  isPlayingAll = true; updatePlayAllBtn();
   let idx = currentSentence;
-  function playNext() {
+  (function next() {
     if (!isPlayingAll || idx >= pages[currentPage].sentences.length) {
-      isPlayingAll = false;
-      updatePlayAllBtn();
-      if (idx >= pages[currentPage].sentences.length) markPageCompleted();
-      return;
+      isPlayingAll = false; updatePlayAllBtn();
+      if (idx >= pages[currentPage].sentences.length) markPageCompleted(); return;
     }
-    currentSentence = idx;
-    updateCardStates();
-
+    currentSentence = idx; updateCardStates();
     const card = document.querySelector(`.sentence-card[data-idx="${idx}"]`);
     card?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     const btn = card?.querySelector('.sentence-play');
     if (btn) btn.classList.add('playing');
-
-    speak(pages[currentPage].sentences[idx], speechRate, () => {
+    speak(getSentenceEn(pages[currentPage].sentences[idx]), speechRate, () => {
       if (btn) btn.classList.remove('playing');
       markSentenceCompleted(currentPage, idx);
-      updateCardStates();
-      updatePageBtns();
-      updateProgress();
-      idx++;
-      playNext();
+      updateCardStates(); updatePageBtns(); updateProgress();
+      idx++; next();
     });
-  }
-  playNext();
+  })();
 }
 
-// --- Event listeners ---
-
+// ==================== Events ====================
 document.getElementById('pageSelector').addEventListener('click', e => {
-  const btn = e.target.closest('.page-btn');
-  if (!btn) return;
+  const b = e.target.closest('.page-btn'); if (!b) return;
   stopAll(); isPlayingAll = false; updatePlayAllBtn();
-  currentPage = parseInt(btn.dataset.page);
-  currentSentence = 0;
-  fullRender();
+  currentPage = parseInt(b.dataset.page); currentSentence = 0; fullRender();
 });
 
-document.querySelectorAll('.mode-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    stopAll(); isPlayingAll = false; updatePlayAllBtn();
-    mode = btn.dataset.mode;
-    document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    fullRender();
-  });
-});
+document.querySelectorAll('.mode-btn').forEach(btn => btn.addEventListener('click', () => {
+  stopAll(); isPlayingAll = false; updatePlayAllBtn();
+  mode = btn.dataset.mode;
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active'); fullRender();
+}));
 
 document.getElementById('content').addEventListener('click', e => {
   const word = e.target.closest('.word');
   if (word) {
     e.stopPropagation();
-    speakWord(word.dataset.word);
+    const w = word.dataset.word || word.querySelector('.w-en')?.textContent;
+    if (w) speakWord(w);
     document.querySelectorAll('.word.word-playing').forEach(el => el.classList.remove('word-playing'));
     word.classList.add('word-playing');
     setTimeout(() => word.classList.remove('word-playing'), 800);
-
     const tooltip = document.getElementById('wordTooltip');
     const rect = word.getBoundingClientRect();
-    tooltip.textContent = word.dataset.word.replace(/[^a-zA-Z'-]/g, '');
+    const ipa = getIpa(w);
+    tooltip.textContent = ipa ? `/${ipa}/` : w.replace(/[^a-zA-Z'-]/g, '');
     tooltip.style.left = `${rect.left + rect.width / 2 - 40}px`;
     tooltip.style.top = `${rect.top - 40}px`;
     tooltip.classList.add('show');
-    setTimeout(() => tooltip.classList.remove('show'), 1000);
+    setTimeout(() => tooltip.classList.remove('show'), 1200);
     return;
   }
-
-  const playBtn = e.target.closest('.sentence-play');
-  if (playBtn) { playSentence(parseInt(playBtn.dataset.idx)); return; }
-
+  const pb = e.target.closest('.sentence-play');
+  if (pb) { playSentence(parseInt(pb.dataset.idx)); return; }
   const card = e.target.closest('.sentence-card');
-  if (card && mode === 'sentence') {
-    currentSentence = parseInt(card.dataset.idx);
-    updateCardStates();
-  }
+  if (card && mode === 'sentence') { currentSentence = parseInt(card.dataset.idx); updateCardStates(); }
 });
 
 document.getElementById('prevBtn').addEventListener('click', () => {
-  if (currentPage > 0) {
-    stopAll(); isPlayingAll = false; updatePlayAllBtn();
-    currentPage--; currentSentence = 0;
-    fullRender();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  if (currentPage > 0) { stopAll(); isPlayingAll = false; updatePlayAllBtn();
+    currentPage--; currentSentence = 0; fullRender(); window.scrollTo({top:0,behavior:'smooth'}); }
 });
-
 document.getElementById('nextBtn').addEventListener('click', () => {
-  if (currentPage < pages.length - 1) {
-    stopAll(); isPlayingAll = false; updatePlayAllBtn();
-    currentPage++; currentSentence = 0;
-    fullRender();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  if (currentPage < pages.length - 1) { stopAll(); isPlayingAll = false; updatePlayAllBtn();
+    currentPage++; currentSentence = 0; fullRender(); window.scrollTo({top:0,behavior:'smooth'}); }
 });
-
 document.getElementById('playAllBtn').addEventListener('click', () => {
-  if (mode === 'sentence') playAll();
-  else document.getElementById('fullPlayBtn')?.click();
+  if (mode === 'sentence') playAll(); else document.getElementById('fullPlayBtn')?.click();
 });
-
 document.getElementById('speedSlider').addEventListener('input', e => {
   speechRate = parseFloat(e.target.value);
   const d = speechRate % 1 === 0 ? speechRate.toFixed(1) : speechRate.toFixed(2).replace(/0$/, '');
